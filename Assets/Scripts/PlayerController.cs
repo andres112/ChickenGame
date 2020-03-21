@@ -44,11 +44,11 @@ public class PlayerController : MonoBehaviour
         // The movement is only restrited to right
         if (move >= 0)
         {
-            rigid.velocity = new Vector2((1 + move) * maxSpeed, rigid.velocity.y);            
+            rigid.velocity = new Vector2((1 + move) * maxSpeed, rigid.velocity.y);
         }
         else
         {
-            rigid.velocity = new Vector2((0.3f + Mathf.Abs(move)), rigid.velocity.y);            
+            rigid.velocity = new Vector2((0.3f + Mathf.Abs(move)), rigid.velocity.y);
         }
 
         //set our speed
