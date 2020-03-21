@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public float jumpValue = 8f;
     private Rigidbody2D rigidbody;
     public Animator playerAnimationController;
+    public GameManager theGameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -77,6 +78,12 @@ public class Player : MonoBehaviour
 
 
 
+    }
+
+    public void OnTriggerEnter2D(Collider2D collider){
+        if ( collider.tag == "Deadly Hazard"){
+            theGameManager.restrartGame();
+        }
     }
 
 }
