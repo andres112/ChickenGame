@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     float groundRadius = 0.2f;
     public LayerMask whatIsGround;
     public float jumpForce = 500f;
+    
+    // The game manager
+    public GameManager theGameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -75,15 +78,27 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // detect collision and destroy element (corn)
+    // detect collision and trigger destroy element (corn)
     public void OnTriggerEnter2D(Collider2D collision)
-    {
+    {        
+        // item collider
         if (collision.gameObject.tag == "Items")
         {
             collision.gameObject.SetActive(false);
             Destroy(collision.gameObject); // destroy the item wich collides
-        }
+        }        
 
+    }
+
+    // Detect collision
+    private void OnCollisionEnter2D(Collision2D collision) {
+        Debug.Log(collision.gameObject.layer);
+        // Enemy collider
+        if ( collision.gameObject.layer == 11){
+            Debug.Log("I am dead");
+            theGameManager.restartGame();
+
+        }     
     }
 
     //flip if needed

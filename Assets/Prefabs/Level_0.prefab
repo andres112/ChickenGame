@@ -207,6 +207,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Corn
       objectReference: {fileID: 0}
+    - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5619aad035b54e545b4f240d66b93f92, type: 3}
 --- !u!4 &535993884105567003 stripped
