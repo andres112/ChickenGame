@@ -222,6 +222,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3604430995629354295}
     m_Modifications:
+    - target: {fileID: 1599329166181519041, guid: 587018275150d6c4fb997217c7ca8664,
+        type: 3}
+      propertyPath: m_UseColliderMask
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4895918423293542790, guid: 587018275150d6c4fb997217c7ca8664,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -297,6 +302,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3604430995629354295}
     m_Modifications:
+    - target: {fileID: 1599329166181519041, guid: 587018275150d6c4fb997217c7ca8664,
+        type: 3}
+      propertyPath: m_UseColliderMask
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4895918423293542790, guid: 587018275150d6c4fb997217c7ca8664,
         type: 3}
       propertyPath: m_LocalPosition.x
