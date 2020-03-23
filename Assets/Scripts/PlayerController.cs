@@ -48,11 +48,16 @@ public class PlayerController : MonoBehaviour
         if (move >= 0)
         {
             rigid.velocity = new Vector2((1 + move) * maxSpeed, rigid.velocity.y);
+            if(grounded){
+                rigid.velocity = new Vector2((0.75f + move) * maxSpeed, rigid.velocity.y);
+            }            
         }
         else
         {
-            rigid.velocity = new Vector2((0.3f + Mathf.Abs(move)), rigid.velocity.y);
+            rigid.velocity = new Vector2((0.5f + Mathf.Abs(move)), rigid.velocity.y);
         }
+
+        Debug.Log("Chicken Velocity: "+rigid.velocity);
 
         //set our speed
         anim.SetFloat("Speed", Mathf.Abs((1)));
@@ -98,6 +103,11 @@ public class PlayerController : MonoBehaviour
             Debug.Log("I am dead");
             theGameManager.restartGame();
 
+        }   
+        if (collision.gameObject.tag == "Fox")
+        {
+            Debug.Log("I was eaten by a fox");
+            theGameManager.restartGame();
         }     
     }
 

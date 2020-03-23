@@ -6,6 +6,7 @@ public class Cook : MonoBehaviour{
 
     public float speed = 5f;
     private Rigidbody2D rigidbody;
+    private List<int> list = new List<int>() { 10, 12};
 
 
     // Start is called before the first frame update
@@ -23,7 +24,7 @@ public class Cook : MonoBehaviour{
 
     private void OnCollisionEnter2D(Collision2D other) {
         // Avoid collisions with platforms
-        if(other.gameObject.layer == 10){
+        if(list.Contains(other.gameObject.layer)){
             Physics2D.IgnoreCollision(other.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }        
     }
