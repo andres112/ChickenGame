@@ -104,9 +104,9 @@ public class PlayerController : MonoBehaviour
             theGameManager.restartGame();
 
         }   
-        if (collision.gameObject.tag == "Fox")
+        if (collision.gameObject.tag == "Wolf")
         {
-            Debug.Log("I was eaten by a fox");
+            Debug.Log("I was eaten by a Wolf");
             theGameManager.restartGame();
         }     
     }

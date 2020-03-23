@@ -1,17 +1,13 @@
 fileFormatVersion: 2
-guid: 58325c59dfa8a1648921ee0ee59d7518
+guid: 2e1697d8e2163404fb5cf51b21f53b6f
 TextureImporter:
   fileIDToRecycleName:
-    21300000: fox_tonge 1_0
-    21300002: fox_tonge 1_1
-    21300004: fox_tonge 1_2
-    21300006: fox_tonge 1_3
-    21300008: fox_tonge 1_4
-    21300010: fox_tonge 1_5
-    21300012: fox_tonge 1_6
-    21300014: fox_tonge 1_7
-    21300016: fox_tonge 1_8
-    21300018: fox_tonge 1_9
+    21300000: Wolf_0
+    21300002: Wolf_1
+    21300004: Wolf_2
+    21300006: Wolf_3
+    21300008: Wolf_4
+    21300010: Wolf_5
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -105,13 +101,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fox_tonge 1_0
+      name: Wolf_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 92
-        width: 130
-        height: 81
+        y: 616
+        width: 822
+        height: 565
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,19 +115,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8707d65a9b5d30240865c0b3e2a067de
+      spriteID: abc299a75738c8b4b844faca911ff06f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fox_tonge 1_1
+      name: Wolf_1
       rect:
         serializedVersion: 2
-        x: 157
-        y: 92
-        width: 130
-        height: 81
+        x: 872
+        y: 617
+        width: 822
+        height: 562
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,19 +135,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b4d902848d69db4a936fa49668ab828
+      spriteID: 4a0b170a6bd23dc4d9437faaea6ff022
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fox_tonge 1_2
+      name: Wolf_2
       rect:
         serializedVersion: 2
-        x: 309
-        y: 92
-        width: 130
-        height: 81
+        x: 1762
+        y: 620
+        width: 846
+        height: 561
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,59 +155,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa20b74d703cd9e4093ff928c504165f
+      spriteID: a7abcaa166c861f448a4e90bab3a740a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fox_tonge 1_3
-      rect:
-        serializedVersion: 2
-        x: 461
-        y: 92
-        width: 130
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 34e09e47a1d1ff74a9105c3403c1d299
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fox_tonge 1_4
-      rect:
-        serializedVersion: 2
-        x: 612
-        y: 92
-        width: 130
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: acc7d62c57ec3d3489358a9908b2ae7b
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fox_tonge 1_5
+      name: Wolf_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 7
-        width: 130
-        height: 81
+        y: 0
+        width: 837
+        height: 560
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -219,19 +175,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0347d6104cd9c284c88faf40857f79c2
+      spriteID: a9d2a7e534078af4c94c2f971d3b4012
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fox_tonge 1_6
+      name: Wolf_4
       rect:
         serializedVersion: 2
-        x: 153
-        y: 7
-        width: 130
-        height: 81
+        x: 867
+        y: 1
+        width: 822
+        height: 561
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,19 +195,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41bb292ae9701774ea749f0e712c03ca
+      spriteID: 365ea77026e19ef40aaf68557c410e9b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fox_tonge 1_7
+      name: Wolf_5
       rect:
         serializedVersion: 2
-        x: 307
-        y: 7
-        width: 130
-        height: 81
+        x: 1786
+        y: 0
+        width: 822
+        height: 561
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -259,47 +215,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e415d310c09c0a94489e2e1e52ee4117
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fox_tonge 1_8
-      rect:
-        serializedVersion: 2
-        x: 460
-        y: 7
-        width: 130
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9ebcc1ea68482cb4d961b4c0d96e0bf3
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fox_tonge 1_9
-      rect:
-        serializedVersion: 2
-        x: 613
-        y: 7
-        width: 130
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b29007b22725a9549ad3e631cb3770bd
+      spriteID: 70b191675f9d58e4ba43cfe4bb83f17d
       vertices: []
       indices: 
       edges: []
@@ -307,7 +223,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 47660df0ad0d8d04c985d3bf12699c67
+    spriteID: 49dd03ca287d0f140b8f3e61fc76bc40
     vertices: []
     indices: 
     edges: []
