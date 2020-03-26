@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     public Player thePlayer;
     private Vector3 playerStratPoint;
+    private float playerStartSpeed;
+    
 
     public Cook theCook;
     private Vector3 cookStartPoint;
@@ -19,7 +21,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         platformStrartPoint = platformGeneration.transform.position;
+
         playerStratPoint = thePlayer.transform.position;
+
         cookStartPoint = theCook.transform.position;
 
     }
@@ -37,6 +41,8 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator RestrartGameCo()
     {
+        theCook.resetPrivateVariables();
+        thePlayer.resetPrivateVariables();
         thePlayer.gameObject.SetActive(false);
         yield return new WaitForSeconds(0.5f);
         platformList = FindObjectsOfType<PlatformDestructor>();

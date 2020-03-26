@@ -9,6 +9,12 @@ public class Player : MonoBehaviour
     public LayerMask jumpLayerMask;
     public float speed = 5f;
     public float constRspeed = 5f;
+    private float constRspeedStore;
+    public float cornSpeedboost = 0.1f;
+    public float constSpeedLoss = 0.05f;
+    public float speedLossMilestone = 20;
+    private float speedLossMilestoneCount;
+    private float speedLossMilestoneCountStore;
     public float jumpValue = 8f;
     private Rigidbody2D rigidbody;
     public Animator playerAnimationController;
@@ -18,6 +24,10 @@ public class Player : MonoBehaviour
     void Start()
     {
         rigidbody =  GetComponent<Rigidbody2D>();
+        speedLossMilestoneCount = speedLossMilestone;
+
+        constRspeedStore = constRspeed;
+        speedLossMilestoneCountStore = speedLossMilestone;
     }
 
     // Update is called once per frame
@@ -27,6 +37,12 @@ public class Player : MonoBehaviour
         float horizontalValue = Input.GetAxis("Horizontal");
         Vector2 velocity = new Vector2(horizontalValue*speed + constRspeed,rigidbody.velocity.y);
         rigidbody.velocity = velocity;
+
+        //speedLoss
+        if (transform.position.x > speedLossMilestoneCount){
+            constRspeed = constRspeed - constSpeedLoss;
+            speedLossMilestoneCount += speedLossMilestone;
+        }
 
         //animation walk signal
         
@@ -84,6 +100,25 @@ public class Player : MonoBehaviour
         if ( collider.tag == "Deadly Hazard"){
             theGameManager.restrartGame();
         }
+        if ( collider.tag == "Goal"){
+            theGameManager.restrartGame();
+        }
+        if ( collider.tag == "Corn"){
+            collider.gameObject.SetActive (false);
+            constRspeed = constRspeed + cornSpeedboost;
+        }
+    }
+
+    public void resetPrivateVariables()
+    {
+        StartCoroutine ("ResetPrivateVariablesCo");
+    }
+
+    public void ResetPrivateVariablesCo()
+    {
+        constRspeed = constRspeedStore;
+        speedLossMilestoneCount= speedLossMilestoneCountStore;
+
     }
 
 }
