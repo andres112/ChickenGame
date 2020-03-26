@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     float groundRadius = 0.2f;
     public LayerMask whatIsGround;
     public float jumpForce = 500f;
-    
+
     // The game manager
     public GameManager theGameManager;
 
@@ -48,16 +48,17 @@ public class PlayerController : MonoBehaviour
         if (move >= 0)
         {
             rigid.velocity = new Vector2((1 + move) * maxSpeed, rigid.velocity.y);
-            if(grounded){
+            if (grounded)
+            {
                 rigid.velocity = new Vector2((0.75f + move) * maxSpeed, rigid.velocity.y);
-            }            
+            }
         }
         else
         {
             rigid.velocity = new Vector2((0.5f + Mathf.Abs(move)), rigid.velocity.y);
         }
 
-        Debug.Log("Chicken Velocity: "+rigid.velocity);
+        Debug.Log("Chicken Velocity: " + rigid.velocity);
 
         //set our speed
         anim.SetFloat("Speed", Mathf.Abs((1)));
@@ -85,30 +86,35 @@ public class PlayerController : MonoBehaviour
 
     // detect collision and trigger destroy element (corn)
     public void OnTriggerEnter2D(Collider2D collision)
-    {        
+    {
         // item collider
         if (collision.gameObject.tag == "Items")
         {
+            ScoreScript.scoreValue++; // increase the score every time collide with a corn
+            Debug.Log("Score: " + ScoreScript.scoreValue);
             collision.gameObject.SetActive(false);
             Destroy(collision.gameObject); // destroy the item wich collides
-        }        
+        }
 
     }
 
     // Detect collision
-    private void OnCollisionEnter2D(Collision2D collision) {
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
         Debug.Log(collision.gameObject.layer);
         // Enemy collider
-        if ( collision.gameObject.layer == 11){
+        if (collision.gameObject.layer == 11)
+        {
             Debug.Log("I am dead");
             theGameManager.restartGame();
 
-        }   
+        }
+        // Wolf collider and restart score
         if (collision.gameObject.tag == "Wolf")
         {
             Debug.Log("I was eaten by a Wolf");
-            theGameManager.restartGame();
-        }     
+            theGameManager.restartGame();            
+        }
     }
 
     //flip if needed

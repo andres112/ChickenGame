@@ -36,5 +36,7 @@ public class GameManager : MonoBehaviour
         theCook.transform.position = cookCurrentPoint;
         thePlayer.gameObject.SetActive(true);
 
+        ScoreScript.scoreValue = 0; // restart the score
+
     }
 }
