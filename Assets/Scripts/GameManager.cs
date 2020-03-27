@@ -11,20 +11,28 @@ public class GameManager : MonoBehaviour
     public Cook theCook;
     private Vector3 cookCurrentPoint;
 
+    public GameObject gameOverScreen;
+
     // Start is called before the first frame update
     void Start()
-    {        
-        cookCurrentPoint = theCook.transform.position;  
-        playerCurrentPoint = thePlayer.transform.position; 
+    {
+        // Take the initial position 
+        cookCurrentPoint = theCook.transform.position;
+        playerCurrentPoint = thePlayer.transform.position;
+
+        // Set the game over screen in false 
+        gameOverScreen.SetActive(false);
     }
 
-    private void Update() {
-        cookCurrentPoint = theCook.transform.position; 
-        playerCurrentPoint.x = cookCurrentPoint.x + 10f;  
+    private void Update()
+    {
+        cookCurrentPoint = theCook.transform.position;
+        playerCurrentPoint = thePlayer.transform.position;
+        playerCurrentPoint.x = cookCurrentPoint.x + 10f;
     }
     public void restartGame()
     {
-        StartCoroutine ("RestartGameCo");
+        StartCoroutine("RestartGameCo");
     }
 
     public IEnumerator RestartGameCo()
@@ -37,6 +45,13 @@ public class GameManager : MonoBehaviour
         thePlayer.gameObject.SetActive(true);
 
         ScoreScript.scoreValue = 0; // restart the score
+        Health.health--;
+        if(Health.health <= 0){
+            gameOverScreen.SetActive(true);
+            Debug.Log("You are death");
+            Time.timeScale = 0f;
+        }
 
     }
+
 }

@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
     // Detect collision
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision.gameObject.layer);
+        Debug.Log("Chicken collision layer: "+collision.gameObject.layer);
         // Enemy collider
         if (collision.gameObject.layer == 11)
         {
