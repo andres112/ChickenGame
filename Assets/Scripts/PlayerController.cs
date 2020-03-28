@@ -6,12 +6,20 @@ public class PlayerController : MonoBehaviour
 {
     //This create an object for RigidBody2D
     private Rigidbody2D rigid;
+
     //This will be our maximum speed as we will always be multiplying by 1
     public float maxSpeed = 2f;
+
     //Boolean value to represent whether we are facing left or not
     bool facingLeft = false;
+
     //Value to represent our Animator
     Animator anim;
+
+    // for jumping, the counts
+    private int airJumpCount;
+    private int airJumpCountMax;
+    float jumpvelocity = 7f;
 
     //to check ground and to have a jumpforce we can change in the editor
     bool grounded = false;
@@ -22,6 +30,11 @@ public class PlayerController : MonoBehaviour
 
     // The game manager
     public GameManager theGameManager;
+
+    private void Awake()
+    {
+        airJumpCountMax = 2;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -41,8 +54,8 @@ public class PlayerController : MonoBehaviour
         //set ground in our Animator to match grounded
         anim.SetBool("Ground", grounded);
         // get horizontal movement
-        float move = Input.GetAxis("Horizontal");//Gives us of one if we are moving via the arrow keys
-                                                 //move our Players rigidbody
+        float move = Input.GetAxis("Horizontal"); //Gives us of one if we are moving via the arrow keys
+        //move our Players rigidbody
 
         // The movement is only restrited to right
         if (move >= 0)
@@ -76,12 +89,50 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        //if we are on the ground and the space bar was pressed, change our ground state and add an upward force
-        if (grounded && Input.GetKeyDown(KeyCode.Space))
+
+        if (grounded)
         {
-            anim.SetBool("Ground", false);
-            rigid.AddForce(new Vector2(0, jumpForce));
+            airJumpCount = 0;
+            // canDoubleJump = true;
         }
+
+        //if we are on the ground and the space bar was pressed, change our ground state and add an upward force
+        // 
+        if (Input.GetKey(KeyCode.Space))
+            if (grounded)
+            {
+                // Normal Jump
+                anim.SetBool("Ground", false);
+                rigid.velocity = Vector2.up * jumpvelocity;
+                // rigid.AddForce(new Vector2(0, jumpForce));
+            }
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    if (airJumpCount < airJumpCountMax)
+                    {
+                        if (ScoreScript.scoreValue > 1)
+                        {
+                            // Air Jump
+                            anim.SetBool("Ground", false);
+                            if (airJumpCount == 1)
+                            {
+                                rigid.velocity = Vector2.up * (jumpvelocity - 2f);
+                                ScoreScript.scoreValue--;
+                            }
+                            else
+                            {
+                                rigid.velocity = Vector2.up * (jumpvelocity - 1f);
+                                ScoreScript.scoreValue = ScoreScript.scoreValue - 2;
+                            }
+
+                            // rigid.AddForce(new Vector2(0, jumpForce));
+                            airJumpCount++;
+                        }
+                    }
+                }
+            }
     }
 
     // detect collision and trigger destroy element (corn)
@@ -95,7 +146,6 @@ public class PlayerController : MonoBehaviour
             collision.gameObject.SetActive(false);
             Destroy(collision.gameObject); // destroy the item wich collides
         }
-
     }
 
     // Detect collision
@@ -107,13 +157,13 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("I am dead");
             theGameManager.restartGame();
-
         }
+
         // Wolf collider and restart score
         if (collision.gameObject.tag == "Wolf")
         {
             Debug.Log("I was eaten by a Wolf");
-            theGameManager.restartGame();            
+            theGameManager.restartGame();
         }
     }
 
