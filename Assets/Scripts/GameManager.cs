@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
+    // Cache Audiomanager
+    private AudioManager audioManager;
     public PlayerController thePlayer;
     private Vector3 playerCurrentPoint;
 
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     private Vector3 cookCurrentPoint;
 
     public GameObject gameOverScreen;
+
+    private Hashtable sounds = new Hashtable();
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +25,22 @@ public class GameManager : MonoBehaviour
 
         // Set the game over screen in false 
         gameOverScreen.SetActive(false);
+
+        // Initialize Sounds used
+        sounds.Add("background", "Background");
+
+        //caching AudioManager
+        audioManager = AudioManager.audio;
+        if (audioManager == null)
+        {
+            Debug.LogError("AudioManager Error: No AudioManager found in the scene.");
+        }
+        else{
+            // Initialize background sound
+            this.managePlaySound((string)sounds["background"]); 
+        }
+
+        
     }
 
     private void Update()
@@ -45,12 +64,23 @@ public class GameManager : MonoBehaviour
         thePlayer.gameObject.SetActive(true);
 
         Health.health--;
-        if(Health.health <= 0){
+        if (Health.health <= 0)
+        {
             gameOverScreen.SetActive(true);
             Debug.Log("You are death");
             Time.timeScale = 0f;
+            this.manageStopSound((string)sounds["background"]); // stop background sound when player dies
         }
 
+    }
+
+    // Centralized audio play trhough the Game manager
+    public void managePlaySound(string _name){
+        audioManager.PlaySound(_name);
+    }
+
+    public void manageStopSound(string _name){
+        audioManager.StopSound(_name);
     }
 
 }

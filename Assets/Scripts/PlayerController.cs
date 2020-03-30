@@ -31,6 +31,12 @@ public class PlayerController : MonoBehaviour
     // The game manager
     public GameManager theGameManager;
 
+    // Sounds for the player item - name 
+    // 0 - CornSound
+    // 1 - JumpSound
+    // 2 - DeathSound
+    public string[] soundNames;
+
     private void Awake()
     {
         airJumpCountMax = 2;
@@ -71,8 +77,6 @@ public class PlayerController : MonoBehaviour
             rigid.velocity = new Vector2((0.5f + Mathf.Abs(move)), rigid.velocity.y);
         }
 
-        Debug.Log("Chicken Velocity: " + rigid.velocity);
-
         //set our speed
         anim.SetFloat("Speed", Mathf.Abs((1)));
 
@@ -99,40 +103,40 @@ public class PlayerController : MonoBehaviour
         //if we are on the ground and the space bar was pressed, change our ground state and add an upward force
         // 
         if (Input.GetKey(KeyCode.Space))
+        {
+
             if (grounded)
             {
                 // Normal Jump
                 anim.SetBool("Ground", false);
                 rigid.velocity = Vector2.up * jumpvelocity;
                 // rigid.AddForce(new Vector2(0, jumpForce));
+
+                // Sound When player jump
+                theGameManager.managePlaySound(soundNames[1]);
             }
             else
             {
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space) & airJumpCount < airJumpCountMax & ScoreScript.scoreValue > 1)
                 {
-                    if (airJumpCount < airJumpCountMax)
+                    // Air Jump
+                    anim.SetBool("Ground", false);
+                    if (airJumpCount == 1)
                     {
-                        if (ScoreScript.scoreValue > 1)
-                        {
-                            // Air Jump
-                            anim.SetBool("Ground", false);
-                            if (airJumpCount == 1)
-                            {
-                                rigid.velocity = Vector2.up * (jumpvelocity - 2f);
-                                ScoreScript.scoreValue--;
-                            }
-                            else
-                            {
-                                rigid.velocity = Vector2.up * (jumpvelocity - 1f);
-                                ScoreScript.scoreValue = ScoreScript.scoreValue - 2;
-                            }
-
-                            // rigid.AddForce(new Vector2(0, jumpForce));
-                            airJumpCount++;
-                        }
+                        rigid.velocity = Vector2.up * (jumpvelocity - 2f);
+                        ScoreScript.scoreValue--;
                     }
+                    else
+                    {
+                        rigid.velocity = Vector2.up * (jumpvelocity - 1f);
+                        ScoreScript.scoreValue = ScoreScript.scoreValue - 2;
+                    }
+
+                    // rigid.AddForce(new Vector2(0, jumpForce));
+                    airJumpCount++;
                 }
             }
+        }
     }
 
     // detect collision and trigger destroy element (corn)
@@ -142,21 +146,24 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Items")
         {
             ScoreScript.scoreValue++; // increase the score every time collide with a corn
-            Debug.Log("Score: " + ScoreScript.scoreValue);
             collision.gameObject.SetActive(false);
             Destroy(collision.gameObject); // destroy the item wich collides
+
+            // Sound When eat corn
+            theGameManager.managePlaySound(soundNames[0]);
         }
     }
 
     // Detect collision
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Chicken collision layer: "+collision.gameObject.layer);
         // Enemy collider
         if (collision.gameObject.layer == 11)
         {
             Debug.Log("I am dead");
             theGameManager.restartGame();
+            // Sound When eat corn
+            theGameManager.managePlaySound(soundNames[2]);
         }
 
         // Wolf collider and restart score
