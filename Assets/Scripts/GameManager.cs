@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public Cook theCook;
     private Vector3 cookCurrentPoint;
 
+    private bool once_flag = false;
+
     public GameObject gameOverScreen;
 
     private Hashtable sounds = new Hashtable();
@@ -34,12 +36,7 @@ public class GameManager : MonoBehaviour
         if (audioManager == null)
         {
             Debug.LogError("AudioManager Error: No AudioManager found in the scene.");
-        }
-        else{
-            // Initialize background sound
-            this.managePlaySound((string)sounds["background"]); 
-        }
-
+        }        
         
     }
 
@@ -48,6 +45,10 @@ public class GameManager : MonoBehaviour
         cookCurrentPoint = theCook.transform.position;
         playerCurrentPoint = thePlayer.transform.position;
         playerCurrentPoint.x = cookCurrentPoint.x + 10f;
+        if(!once_flag){
+            this.managePlaySound((string)sounds["background"]); 
+            once_flag = true;
+        }
     }
     public void restartGame()
     {

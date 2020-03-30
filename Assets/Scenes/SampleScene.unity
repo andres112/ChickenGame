@@ -1552,15 +1552,15 @@ MonoBehaviour:
   - name: Background
     clip: {fileID: 8300000, guid: f27985d377b8b4348839c8a7e76c3175, type: 3}
     volume: 0.2
-    pitch: 1
-    randomVolume: 0.1
-    randomPitch: 0.1
+    pitch: 0.97
+    randomVolume: 0
+    randomPitch: 0
   - name: Corn
     clip: {fileID: 8300000, guid: 6050da9894cec404aa127c6c9782003d, type: 3}
     volume: 1
     pitch: 1
-    randomVolume: 0.1
-    randomPitch: 0.1
+    randomVolume: 0
+    randomPitch: 0
   - name: Jump
     clip: {fileID: 8300000, guid: c7e8d17e728e2f9479be057fe9d2a8ce, type: 3}
     volume: 1
@@ -1572,7 +1572,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     randomVolume: 0
-    randomPitch: 0
+    randomPitch: 0.1
 --- !u!1 &1191411894
 GameObject:
   m_ObjectHideFlags: 0
