@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static bool IsGameOver = false; 
     // Cache Audiomanager
     private AudioManager audioManager;
     public PlayerController thePlayer;
@@ -55,6 +56,10 @@ public class GameManager : MonoBehaviour
         StartCoroutine("RestartGameCo");
     }
 
+    public void respawnGame(){
+        StartCoroutine("RespawnGameCo");
+    }
+
     public IEnumerator RestartGameCo()
     {
         thePlayer.gameObject.SetActive(false);
@@ -64,15 +69,41 @@ public class GameManager : MonoBehaviour
         theCook.transform.position = cookCurrentPoint;
         thePlayer.gameObject.SetActive(true);
 
+        // Lifes and shields decresing logic
+        if(Health.health == Health.shield){
+            Health.shield--;
+        }
         Health.health--;
+        checkIsAlive();
+    }
+    public IEnumerator RespawnGameCo()
+    {
+        thePlayer.gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
+
+        thePlayer.transform.position = playerCurrentPoint;
+        theCook.transform.position = cookCurrentPoint;
+        thePlayer.gameObject.SetActive(true);
+
+        // Lifes and shields decresing logic
+        if(Health.shield > 0){
+            Health.shield--;
+        }
+        else{
+            Health.health--;
+        }        
+        checkIsAlive();
+    }
+
+    private void checkIsAlive(){
         if (Health.health <= 0)
         {
             gameOverScreen.SetActive(true);
-            Debug.Log("You are death");
+            Debug.Log("Game Over");
             Time.timeScale = 0f;
+            IsGameOver = true;
             this.manageStopSound((string)sounds["background"]); // stop background sound when player dies
         }
-
     }
 
     // Centralized audio play trhough the Game manager

@@ -6,7 +6,7 @@ public class Cook : MonoBehaviour{
 
     public float speed = 5f;
     private Rigidbody2D rigidbody;
-    private List<int> list = new List<int>() { 10, 12};
+    private List<int> list = new List<int>() { 10, 11, 12};
 
 
     // Start is called before the first frame update

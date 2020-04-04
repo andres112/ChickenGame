@@ -49,7 +49,6 @@ public class LevelGenerator : MonoBehaviour
             lastEndPosition.y = help_position;
             currentLevel = level_0;
         }
-        Debug.Log("Is ground? "+grounded+" - Last end position: "+lastEndPosition.y );
 
         Transform lastLevelPartTransform = SpawnLevelPart(currentLevel, lastEndPosition);
         lastEndPosition = lastLevelPartTransform.Find("End_Level").position;

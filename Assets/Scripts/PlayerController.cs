@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
     // 0 - CornSound
     // 1 - JumpSound
     // 2 - DeathSound
+    // 3 - ShieldSound
+    // 4 - NewLifeSound
     public string[] soundNames;
 
     private void Awake()
@@ -143,14 +145,17 @@ public class PlayerController : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         // item collider
-        if (collision.gameObject.tag == "Items")
+        if (collision.gameObject.layer == 12)
         {
-            ScoreScript.scoreValue++; // increase the score every time collide with a corn
+            if (collision.gameObject.tag == "Corn")
+            {
+                ScoreScript.scoreValue++; // increase the score every time collide with a corn
+                theGameManager.managePlaySound(soundNames[0]);
+            }
+
             collision.gameObject.SetActive(false);
             Destroy(collision.gameObject); // destroy the item wich collides
 
-            // Sound When eat corn
-            theGameManager.managePlaySound(soundNames[0]);
         }
     }
 
@@ -160,17 +165,37 @@ public class PlayerController : MonoBehaviour
         // Enemy collider
         if (collision.gameObject.layer == 11)
         {
-            Debug.Log("I am dead");
-            theGameManager.restartGame();
-            // Sound When eat corn
-            theGameManager.managePlaySound(soundNames[2]);
-        }
+            if (collision.gameObject.tag == "Cook")
+            {
+                theGameManager.restartGame();
+                // Sound When eat corn
+                theGameManager.managePlaySound(soundNames[2]);
+            }
+            // Wolf collider and restart score
+            if (collision.gameObject.tag == "Wolf")
+            {
+                theGameManager.respawnGame();
+                theGameManager.managePlaySound(soundNames[2]);
+            }
+        }       
 
-        // Wolf collider and restart score
-        if (collision.gameObject.tag == "Wolf")
-        {
-            Debug.Log("I was eaten by a Wolf");
-            theGameManager.restartGame();
+        if(collision.gameObject.layer == 12){
+            // Shield collision
+            if (collision.gameObject.tag == "Shield" & Health.shield < Health.health)
+            {
+                // increase the shield every time collide with a blue hearth if the shield is less than health
+                Health.shield++; 
+                theGameManager.managePlaySound(soundNames[3]);   
+                             
+            }
+            // New Life Collision
+            if (collision.gameObject.tag == "Life")
+            {
+                Health.health++; // increase the shield every time collide with a blue hearth
+                theGameManager.managePlaySound(soundNames[4]);                
+            }
+            collision.gameObject.SetActive(false);
+            Destroy(collision.gameObject); // destroy the item wich collides
         }
     }
 
