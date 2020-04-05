@@ -152,9 +152,11 @@ public class PlayerController : MonoBehaviour
                 ScoreScript.scoreValue++; // increase the score every time collide with a corn
                 theGameManager.managePlaySound(soundNames[0]);
             }
-
-            collision.gameObject.SetActive(false);
-            Destroy(collision.gameObject); // destroy the item wich collides
+            if (!(collision.gameObject.tag == "Stationary")){
+                collision.gameObject.SetActive(false);
+                Destroy(collision.gameObject); // destroy the item wich collides
+            }
+            
 
         }
     }
@@ -165,14 +167,14 @@ public class PlayerController : MonoBehaviour
         // Enemy collider
         if (collision.gameObject.layer == 11)
         {
-            if (collision.gameObject.tag == "Cook")
+            if (collision.gameObject.tag == "Deadly Hazard")
             {
                 theGameManager.restartGame();
                 // Sound When eat corn
                 theGameManager.managePlaySound(soundNames[2]);
             }
             // Wolf collider and restart score
-            if (collision.gameObject.tag == "Wolf")
+            if (collision.gameObject.tag == "Damaging Hazard")
             {
                 theGameManager.respawnGame();
                 theGameManager.managePlaySound(soundNames[2]);

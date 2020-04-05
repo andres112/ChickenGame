@@ -9,12 +9,12 @@ public class Camera_Follow : MonoBehaviour
 
     private void Awake()
     {
-        GetComponent<UnityEngine.Camera>().orthographicSize = ((Screen.height / 2) / camera_distance);
+        //GetComponent<UnityEngine.Camera>().orthographicSize = ((Screen.height / 2) / camera_distance);
     }
 
     void FixedUpdate()
     {
         //transform.position = new Vector3(player.position.x, player.position.y, transform.position.z);
-        transform.position = new Vector3(player.position.x, 0, transform.position.z);
+        transform.position = new Vector3(player.position.x, transform.position.y, transform.position.z);
     }
 }

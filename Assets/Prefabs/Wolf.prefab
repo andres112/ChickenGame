@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 797638582}
   m_Layer: 11
   m_Name: Wolf
-  m_TagString: Wolf
+  m_TagString: Deadly Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
