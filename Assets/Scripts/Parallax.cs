@@ -17,6 +17,8 @@ public class Parallax : MonoBehaviour
         Sprite sprite = GetComponent<SpriteRenderer>().sprite;
         Texture2D texture = sprite.texture;
         textureUnitSizeX = texture.width / sprite.pixelsPerUnit;
+
+        Debug.Log("width "+texture.width+" and pixels "+sprite.pixelsPerUnit);
         //textureUnitSizeY = texture.height / sprite.pixelsPerUnit;
     }
 

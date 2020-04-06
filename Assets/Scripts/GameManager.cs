@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
         cookCurrentPoint = theCook.transform.position;
         playerCurrentPoint = thePlayer.transform.position;
         playerCurrentPoint.x = cookCurrentPoint.x + 10f;
+        playerCurrentPoint.y = -3; // over the ground
         if(!once_flag){
             this.managePlaySound((string)sounds["background"]); 
             once_flag = true;
