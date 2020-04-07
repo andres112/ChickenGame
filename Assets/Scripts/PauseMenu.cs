@@ -47,7 +47,7 @@ public class PauseMenu : MonoBehaviour
         Debug.Log("Menu Button");
     }
     public void Quit(){
-        UnityEditor.EditorApplication.isPlaying = false;
+        // UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
     }
 }
