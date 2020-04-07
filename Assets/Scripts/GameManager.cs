@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
-public class GameManager : MonoBehaviour
-{
-    public static bool IsGameOver = false; 
+public class GameManager : MonoBehaviour {
+    public static bool IsGameOver = false;
     // Cache Audiomanager
     private AudioManager audioManager;
     public PlayerController thePlayer;
@@ -15,105 +16,108 @@ public class GameManager : MonoBehaviour
 
     private bool once_flag = false;
 
-    public GameObject gameOverScreen;
+    public GameObject countdown;
 
-    private Hashtable sounds = new Hashtable();
+    private Hashtable sounds = new Hashtable ();
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start () {
+        // Countdown before to start
+        StartCoroutine ("StartDelay");
         // Take the initial position 
         cookCurrentPoint = theCook.transform.position;
         playerCurrentPoint = thePlayer.transform.position;
 
-        // Set the game over screen in false 
-        gameOverScreen.SetActive(false);
+        // TODO: // Set the game over screen in false 
+        // gameOverScreen.SetActive(false);
 
         // Initialize Sounds used
-        sounds.Add("background", "Background");
+        sounds.Add ("background", "Background");
 
         //caching AudioManager
         audioManager = AudioManager.audio;
-        if (audioManager == null)
-        {
-            Debug.LogError("AudioManager Error: No AudioManager found in the scene.");
-        }        
-        
+        if (audioManager == null) {
+            Debug.LogError ("AudioManager Error: No AudioManager found in the scene.");
+        }
+
     }
 
-    private void Update()
-    {
+    private void Update () {
         cookCurrentPoint = theCook.transform.position;
         playerCurrentPoint = thePlayer.transform.position;
         playerCurrentPoint.x = cookCurrentPoint.x + 10f;
         playerCurrentPoint.y = -3; // over the ground
-        if(!once_flag){
-            this.managePlaySound((string)sounds["background"]); 
+        if (!once_flag) {
+            this.managePlaySound ((string) sounds["background"]);
             once_flag = true;
         }
     }
-    public void restartGame()
-    {
-        StartCoroutine("RestartGameCo");
+
+    IEnumerator StartDelay () {
+        
+        Time.timeScale = 0;
+        float pauseTime = Time.realtimeSinceStartup + 3.5f;
+        while(Time.realtimeSinceStartup < pauseTime){
+            yield return 0;
+        }
+        countdown.SetActive(false);
+        Time.timeScale = 1;        
+    }
+    public void restartGame () {
+        StartCoroutine ("RestartGameCo");
     }
 
-    public void respawnGame(){
-        StartCoroutine("RespawnGameCo");
+    public void respawnGame () {
+        StartCoroutine ("RespawnGameCo");
     }
 
-    public IEnumerator RestartGameCo()
-    {
-        thePlayer.gameObject.SetActive(false);
-        yield return new WaitForSeconds(0.5f);
+    public IEnumerator RestartGameCo () {
+        thePlayer.gameObject.SetActive (false);
+        yield return new WaitForSeconds (0.5f);
 
         thePlayer.transform.position = playerCurrentPoint;
         theCook.transform.position = cookCurrentPoint;
-        thePlayer.gameObject.SetActive(true);
+        thePlayer.gameObject.SetActive (true);
 
         // Lifes and shields decresing logic
-        if(Health.health == Health.shield){
+        if (Health.health == Health.shield) {
             Health.shield--;
         }
         Health.health--;
-        checkIsAlive();
+        checkIsAlive ();
     }
-    public IEnumerator RespawnGameCo()
-    {
-        thePlayer.gameObject.SetActive(false);
-        yield return new WaitForSeconds(0.2f);
+    public IEnumerator RespawnGameCo () {
+        thePlayer.gameObject.SetActive (false);
+        yield return new WaitForSeconds (0.2f);
 
         thePlayer.transform.position = playerCurrentPoint;
         theCook.transform.position = cookCurrentPoint;
-        thePlayer.gameObject.SetActive(true);
+        thePlayer.gameObject.SetActive (true);
 
         // Lifes and shields decresing logic
-        if(Health.shield > 0){
+        if (Health.shield > 0) {
             Health.shield--;
-        }
-        else{
+        } else {
             Health.health--;
-        }        
-        checkIsAlive();
+        }
+        checkIsAlive ();
     }
 
-    private void checkIsAlive(){
-        if (Health.health <= 0)
-        {
-            gameOverScreen.SetActive(true);
-            Debug.Log("Game Over");
-            Time.timeScale = 0f;
+    private void checkIsAlive () {
+        if (Health.health <= 0) {
             IsGameOver = true;
-            this.manageStopSound((string)sounds["background"]); // stop background sound when player dies
+            this.manageStopSound ((string) sounds["background"]); // stop background sound when player dies
+            SceneManager.LoadScene ("GameOver");
         }
     }
 
     // Centralized audio play trhough the Game manager
-    public void managePlaySound(string _name){
-        audioManager.PlaySound(_name);
+    public void managePlaySound (string _name) {
+        audioManager.PlaySound (_name);
     }
 
-    public void manageStopSound(string _name){
-        audioManager.StopSound(_name);
+    public void manageStopSound (string _name) {
+        audioManager.StopSound (_name);
     }
 
 }

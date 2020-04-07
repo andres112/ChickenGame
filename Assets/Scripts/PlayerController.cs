@@ -28,6 +28,12 @@ public class PlayerController : MonoBehaviour
     public LayerMask whatIsGround;
     public float jumpForce = 500f;
 
+    // Velocity settings
+    public float InertiaSpeed, AccelerationSpeed, GroundSpeed, SkySpeed;
+
+    // Validate is on platforms
+    private bool IsPlatform = false;
+
     // The game manager
     public GameManager theGameManager;
 
@@ -67,17 +73,24 @@ public class PlayerController : MonoBehaviour
 
         // The movement is only restrited to right
         if (move >= 0)
-        {
-            rigid.velocity = new Vector2((1 + move) * maxSpeed, rigid.velocity.y);
+        {            
             if (grounded)
             {
-                rigid.velocity = new Vector2((0.75f + move) * maxSpeed, rigid.velocity.y);
+                // validate if ground in platform or floor
+                float variationSpeed = IsPlatform ? AccelerationSpeed: GroundSpeed;
+                rigid.velocity =  new Vector2((variationSpeed + move) * maxSpeed, rigid.velocity.y);
+            }
+            else{
+                // Jumping x velocity
+                rigid.velocity = new Vector2((SkySpeed + move) * maxSpeed, rigid.velocity.y);
             }
         }
         else
         {
-            rigid.velocity = new Vector2((0.5f + Mathf.Abs(move)), rigid.velocity.y);
+            rigid.velocity = new Vector2((InertiaSpeed + Mathf.Abs(move)), rigid.velocity.y);
         }
+
+        Debug.Log("Velocity: "+rigid.velocity);
 
         //set our speed
         anim.SetFloat("Speed", Mathf.Abs((1)));
@@ -164,6 +177,12 @@ public class PlayerController : MonoBehaviour
     // Detect collision
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // Platform Collision
+        IsPlatform = false;
+        if(collision.gameObject.layer == 10){
+            // by default the platforms give to the player more speed
+            IsPlatform = true;
+        }
         // Enemy collider
         if (collision.gameObject.layer == 11)
         {
@@ -181,7 +200,7 @@ public class PlayerController : MonoBehaviour
             }
         }       
 
-        if(collision.gameObject.layer == 12){
+        if(collision.gameObject.layer == 12){            
             // Shield collision
             if (collision.gameObject.tag == "Shield" & Health.shield < Health.health)
             {

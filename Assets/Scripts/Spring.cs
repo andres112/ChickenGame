@@ -27,7 +27,6 @@ public class Spring : MonoBehaviour
 
                  collider_rigidbody.AddForce (impulse, ForceMode2D.Impulse);
                  if(springAnimationController != null){
-                     Debug.Log ("Animation!");
                     springAnimationController.SetTrigger("active");
                  }
              }
