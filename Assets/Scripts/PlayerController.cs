@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private Transform pfDoubleJumpEffect;
     //This create an object for RigidBody2D
     private Rigidbody2D rigid;
 
@@ -132,12 +133,13 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                if (Input.GetKeyDown(KeyCode.Space) & airJumpCount < airJumpCountMax & ScoreScript.scoreValue > 1)
+                if (Input.GetKeyDown(KeyCode.Space) & airJumpCount < airJumpCountMax & ScoreScript.scoreValue >= 3)
                 {
                     // Air Jump
                     anim.SetBool("Ground", false);
                     if (airJumpCount == 1)
                     {
+                        Instantiate(pfDoubleJumpEffect, transform.position, Quaternion.identity);
                         rigid.velocity = Vector2.up * (jumpvelocity - 2f);
                         ScoreScript.scoreValue--;
                     }
