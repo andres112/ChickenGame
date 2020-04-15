@@ -23,8 +23,8 @@ public class DayNightCycle : MonoBehaviour {
         currentTime = 300;
         StartCoroutine (TimeOfDay ());
         earth = gameObject.transform.parent.gameObject;
-        moon.intensity = 350;
-        moon.range = 15;
+        moon.intensity = 15;
+        moon.range = 10;
     }
 
     void Update () {
@@ -37,9 +37,9 @@ public class DayNightCycle : MonoBehaviour {
             stars.SetActive (true);
         } else if (currentTime >= dayStart && currentTime < nightStart) {
             isDay = true;
-            sun.intensity = 200;
-            sun.range = 15;
-            sun.colorTemperature = 400f;
+            sun.intensity = 1;
+            sun.range = 25;
+            sun.colorTemperature = 450f;
             stars.SetActive (false);
         } else if (currentTime >= nightStart && currentTime < dayLength) {
             isDay = false;
