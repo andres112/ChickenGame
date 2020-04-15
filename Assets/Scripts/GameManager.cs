@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
 
 public class GameManager : MonoBehaviour {
     public static bool IsGameOver = false;
@@ -54,14 +54,15 @@ public class GameManager : MonoBehaviour {
     }
 
     IEnumerator StartDelay () {
-        
+
         Time.timeScale = 0;
         float pauseTime = Time.realtimeSinceStartup + 3.5f;
-        while(Time.realtimeSinceStartup < pauseTime){
+        while (Time.realtimeSinceStartup < pauseTime) {
             yield return 0;
         }
-        countdown.SetActive(false);
-        Time.timeScale = 1;        
+
+        countdown.SetActive (false);
+        if (!PauseMenu.GameIsPaused) Time.timeScale = 1;
     }
     public void restartGame () {
         StartCoroutine ("RestartGameCo");
