@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour {
             rigid.velocity = new Vector2 ((InertiaSpeed + Mathf.Abs (move)), rigid.velocity.y);
         }
 
-        // Debug.Log ("Velocity: " + rigid.velocity);
+        Debug.Log ("Velocity: " + rigid.velocity);
 
         //set our speed
         anim.SetFloat ("Speed", Mathf.Abs ((1)));
