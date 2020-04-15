@@ -19,7 +19,7 @@ public class DayNightCycle : MonoBehaviour {
     void Start () {
         dayLength = 1440;
         dayStart = 330;
-        nightStart = 1200;
+        nightStart = 1140;
         currentTime = 300;
         StartCoroutine (TimeOfDay ());
         earth = gameObject.transform.parent.gameObject;
@@ -49,13 +49,15 @@ public class DayNightCycle : MonoBehaviour {
             currentTime = 0;
         }
 
+        // every N cycles the player win a hearth if health is less than MaxHealth
         if (currentTime == 300) {
             count_days++;
-            if (count_days >= days_to_win) {
-                Debug.LogWarning("New Level Generation Activated");
-                if(Health.health < Health.MaxHealth){
-                    Health.health = Health.MaxHealth;
-                }                
+            if (count_days >= days_to_win) {                
+                if (Health.health < Health.MaxHealth) {
+                    Health.health++;
+                }
+                Debug.LogWarning ("New Level Generation Activated. new health: "+Health.health);
+                count_days = 0;
             }
         }
 
