@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
     [SerializeField] private Transform pfDoubleJumpEffect;
+
     //This create an object for RigidBody2D
     private Rigidbody2D rigid;
 
@@ -149,7 +150,6 @@ public class PlayerController : MonoBehaviour {
                 collision.gameObject.SetActive (false);
                 Destroy (collision.gameObject); // destroy the item wich collides
             }
-
         }
     }
 
@@ -165,7 +165,6 @@ public class PlayerController : MonoBehaviour {
         if (collision.gameObject.layer == 11) {
             if (collision.gameObject.tag == "Deadly Hazard") {
                 theGameManager.restartGame ();
-                // Sound When eat corn
                 theGameManager.managePlaySound (soundNames[2]);
             }
             // Wolf collider and restart score
