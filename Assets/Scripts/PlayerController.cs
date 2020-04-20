@@ -83,20 +83,8 @@ public class PlayerController : MonoBehaviour {
             rigid.velocity = new Vector2 ((InertiaSpeed + Mathf.Abs (move)), rigid.velocity.y);
         }
 
-        // Debug.Log ("Velocity: " + rigid.velocity);
-
         //set our speed
         anim.SetFloat ("Speed", Mathf.Abs ((1)));
-
-        ////if we are moving left but not facing left flip, and vice versa
-        //if (move < 0 && !facingLeft)
-        //{
-        //    Flip();
-        //}
-        //else if (move > 0 && facingLeft)
-        //{
-        //    Flip();
-        //}
     }
 
     void Update () {
@@ -129,7 +117,7 @@ public class PlayerController : MonoBehaviour {
                     } else {
                         rigid.velocity = Vector2.up * (jumpvelocity - 1f);
                         ScoreScript.scoreValue = ScoreScript.scoreValue - 2;
-                    }
+                    }                   
 
                     // rigid.AddForce(new Vector2(0, jumpForce));
                     airJumpCount++;
