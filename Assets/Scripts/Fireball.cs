@@ -14,14 +14,12 @@ public class Fireball : MonoBehaviour {
         audioManager = AudioManager.audio;
         if (audioManager == null) {
             Debug.LogError ("AudioManager Error: No AudioManager found in the scene.");
-        }
-        StartCoroutine ("StartDelay");
+        }  
+        else{
+            audioManager.PlaySound ("Cannon");
+        }      
+        StartCoroutine ("DestroyBall");
     }
-    // private void OnTriggerEnter2D (Collision2D collision) {
-    //     if (list.Contains (collision.gameObject.layer)) {
-    //         Physics2D.IgnoreCollision (collision.gameObject.GetComponent<Collider2D> (), GetComponent<Collider2D> ());
-    //     }
-    // }
     private void OnCollisionEnter2D (Collision2D collision) {
         if (list.Contains (collision.gameObject.layer)) {
             Physics2D.IgnoreCollision (collision.gameObject.GetComponent<Collider2D> (), GetComponent<Collider2D> ());
@@ -41,9 +39,9 @@ public class Fireball : MonoBehaviour {
         yield return new WaitForSeconds (0.3f);
         hitEffect.GetComponent<ParticleSystem> ().enableEmission = false;
         hitEffect.GetComponent<ParticleSystem> ().Clear ();
-    }
+    }    
 
-    IEnumerator StartDelay () {
+    IEnumerator DestroyBall () {
         yield return new WaitForSeconds (1f);
         Destroy (gameObject);
     }
