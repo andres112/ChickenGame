@@ -5017,7 +5017,7 @@ MonoBehaviour:
     - sections:
       - {fileID: 1698838058195508462, guid: 5ba4323be77209843bf31664b4e7b759, type: 3}
   generationPoint: {fileID: 571052590}
-  sectionsPerLevel: 5
+  sectionsPerLevel: 1
   sectionsIncrement: 1
 --- !u!4 &262142614
 Transform:
@@ -8998,6 +8998,11 @@ PrefabInstance:
       propertyPath: countdown
       value: 
       objectReference: {fileID: 1409318464}
+    - target: {fileID: 8699833313463196375, guid: bb22486e5316096439144dad830eb4ec,
+        type: 3}
+      propertyPath: speedUpFactor
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8699833313463196376, guid: bb22486e5316096439144dad830eb4ec,
         type: 3}
       propertyPath: m_Name

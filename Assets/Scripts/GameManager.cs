@@ -8,11 +8,15 @@ public class GameManager : MonoBehaviour {
     public static bool IsGameOver = false;
     // Cache Audiomanager
     private AudioManager audioManager;
+
+    public float speedUpFactor;
     public PlayerController thePlayer;
     private Vector3 playerCurrentPoint;
 
     public Cook theCook;
     private Vector3 cookCurrentPoint;
+
+    private int currentLevel;
 
     private bool once_flag = false;
 
@@ -40,6 +44,8 @@ public class GameManager : MonoBehaviour {
             Debug.LogError ("AudioManager Error: No AudioManager found in the scene.");
         }
 
+        currentLevel = 0;
+
     }
 
     private void Update () {
@@ -50,6 +56,15 @@ public class GameManager : MonoBehaviour {
         if (!once_flag) {
             this.managePlaySound ((string) sounds["background"]);
             once_flag = true;
+        }
+        if(currentLevel < LevelScript.levelValue){
+            thePlayer.maxSpeed = thePlayer.maxSpeed + thePlayer.maxSpeed*speedUpFactor;
+            thePlayer.GroundSpeed = thePlayer.GroundSpeed + thePlayer.GroundSpeed*speedUpFactor;
+            thePlayer.SkySpeed = thePlayer.SkySpeed + thePlayer.SkySpeed*speedUpFactor;
+
+            theCook.speed = theCook.speed + theCook.speed*speedUpFactor; 
+
+            currentLevel = LevelScript.levelValue;
         }
     }
 
