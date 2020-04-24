@@ -5882,17 +5882,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 691020026}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 456968766}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 129, y: 646}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 124.5, y: -31}
+  m_SizeDelta: {x: 201, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &691020028
 MonoBehaviour:
@@ -6134,17 +6134,17 @@ PrefabInstance:
     - target: {fileID: 5270429969975170763, guid: 807ef2bab47c2fe41bbc101f39f297f0,
         type: 3}
       propertyPath: InertiaSpeed
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5270429969975170763, guid: 807ef2bab47c2fe41bbc101f39f297f0,
         type: 3}
       propertyPath: AccelerationSpeed
-      value: 1.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5270429969975170763, guid: 807ef2bab47c2fe41bbc101f39f297f0,
         type: 3}
       propertyPath: GroundSpeed
-      value: 0.75
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5270429969975170763, guid: 807ef2bab47c2fe41bbc101f39f297f0,
         type: 3}
@@ -6154,7 +6154,7 @@ PrefabInstance:
     - target: {fileID: 5270429969975170763, guid: 807ef2bab47c2fe41bbc101f39f297f0,
         type: 3}
       propertyPath: SkySpeed
-      value: 1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5270429969975170763, guid: 807ef2bab47c2fe41bbc101f39f297f0,
         type: 3}
@@ -6169,7 +6169,7 @@ PrefabInstance:
     - target: {fileID: 5270429969975170763, guid: 807ef2bab47c2fe41bbc101f39f297f0,
         type: 3}
       propertyPath: maxSpeed
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 807ef2bab47c2fe41bbc101f39f297f0, type: 3}
@@ -7397,7 +7397,7 @@ PrefabInstance:
     - target: {fileID: 2831134052919475398, guid: c137ae1efcad6c24ea0d226410046cd5,
         type: 3}
       propertyPath: speed
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2831134052919475399, guid: c137ae1efcad6c24ea0d226410046cd5,
         type: 3}

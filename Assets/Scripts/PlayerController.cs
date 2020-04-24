@@ -83,6 +83,8 @@ public class PlayerController : MonoBehaviour {
             rigid.velocity = new Vector2 ((InertiaSpeed + Mathf.Abs (move)), rigid.velocity.y);
         }
 
+        Debug.Log ("**** Chicken Speed:" + rigid.velocity);
+
         //set our speed
         anim.SetFloat ("Speed", Mathf.Abs ((1)));
     }
@@ -117,7 +119,7 @@ public class PlayerController : MonoBehaviour {
                     } else {
                         rigid.velocity = Vector2.up * (jumpvelocity - 1f);
                         ScoreScript.scoreValue = ScoreScript.scoreValue - 2;
-                    }                   
+                    }
 
                     // rigid.AddForce(new Vector2(0, jumpForce));
                     airJumpCount++;

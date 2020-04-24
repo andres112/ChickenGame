@@ -57,12 +57,12 @@ public class GameManager : MonoBehaviour {
             this.managePlaySound ((string) sounds["background"]);
             once_flag = true;
         }
-        if(currentLevel < LevelScript.levelValue){
-            thePlayer.maxSpeed = thePlayer.maxSpeed + thePlayer.maxSpeed*speedUpFactor;
-            thePlayer.GroundSpeed = thePlayer.GroundSpeed + thePlayer.GroundSpeed*speedUpFactor;
-            thePlayer.SkySpeed = thePlayer.SkySpeed + thePlayer.SkySpeed*speedUpFactor;
+        if (currentLevel < LevelScript.levelValue) {
+            thePlayer.maxSpeed = thePlayer.maxSpeed + thePlayer.maxSpeed * speedUpFactor;
+            // thePlayer.GroundSpeed = thePlayer.GroundSpeed + thePlayer.GroundSpeed*speedUpFactor;
+            // thePlayer.SkySpeed = thePlayer.SkySpeed + thePlayer.SkySpeed*speedUpFactor;
 
-            theCook.speed = theCook.speed + theCook.speed*speedUpFactor; 
+            theCook.speed = theCook.speed + speedUpFactor * theCook.speed ;
 
             currentLevel = LevelScript.levelValue;
         }
