@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8699833313463196376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8699833313463196374}
+  - component: {fileID: 8699833313463196375}
+  - component: {fileID: 8699833313463196373}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8699833313463196374
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8699833313463196376}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.478499, y: 0.854656, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8699833313463196375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8699833313463196376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 167ed2f236b925d44a8ce95513015d23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thePlayer: {fileID: 0}
+  theCook: {fileID: 0}
+  countdown: {fileID: 0}
+--- !u!114 &8699833313463196373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8699833313463196376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2057e1767d40d134a93d486781d0e4e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Background
+    clip: {fileID: 8300000, guid: f27985d377b8b4348839c8a7e76c3175, type: 3}
+    volume: 0.2
+    pitch: 0.97
+    randomVolume: 0
+    randomPitch: 0
+    loop: 1
+  - name: Corn
+    clip: {fileID: 8300000, guid: 6050da9894cec404aa127c6c9782003d, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loop: 0
+  - name: Jump
+    clip: {fileID: 8300000, guid: c7e8d17e728e2f9479be057fe9d2a8ce, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loop: 0
+  - name: Die
+    clip: {fileID: 8300000, guid: b13162c8a14de4a45aae4d087faec360, type: 3}
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0.1
+    loop: 0
+  - name: Shield
+    clip: {fileID: 8300000, guid: b5dfe773455a01c46b9a263cf0133528, type: 3}
+    volume: 0.8
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0.1
+    loop: 0
+  - name: NewLife
+    clip: {fileID: 8300000, guid: e1424c3dae83c1543ab064eef488ff83, type: 3}
+    volume: 0.8
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0.1
+    loop: 0

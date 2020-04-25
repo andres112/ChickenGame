@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
     [SerializeField] private Transform pfDoubleJumpEffect;
+
     //This create an object for RigidBody2D
     private Rigidbody2D rigid;
 
@@ -82,20 +83,10 @@ public class PlayerController : MonoBehaviour {
             rigid.velocity = new Vector2 ((InertiaSpeed + Mathf.Abs (move)), rigid.velocity.y);
         }
 
-        Debug.Log ("Velocity: " + rigid.velocity);
+        Debug.Log ("**** Chicken Speed:" + rigid.velocity);
 
         //set our speed
         anim.SetFloat ("Speed", Mathf.Abs ((1)));
-
-        ////if we are moving left but not facing left flip, and vice versa
-        //if (move < 0 && !facingLeft)
-        //{
-        //    Flip();
-        //}
-        //else if (move > 0 && facingLeft)
-        //{
-        //    Flip();
-        //}
     }
 
     void Update () {
@@ -149,7 +140,6 @@ public class PlayerController : MonoBehaviour {
                 collision.gameObject.SetActive (false);
                 Destroy (collision.gameObject); // destroy the item wich collides
             }
-
         }
     }
 
@@ -165,7 +155,6 @@ public class PlayerController : MonoBehaviour {
         if (collision.gameObject.layer == 11) {
             if (collision.gameObject.tag == "Deadly Hazard") {
                 theGameManager.restartGame ();
-                // Sound When eat corn
                 theGameManager.managePlaySound (soundNames[2]);
             }
             // Wolf collider and restart score
