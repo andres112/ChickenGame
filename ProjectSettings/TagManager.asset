@@ -14,7 +14,7 @@ TagManager:
   - Items
   - Damaging Hazard
   - Stationary
-  - Fire
+  - Fireball
   layers:
   - Default
   - TransparentFX
