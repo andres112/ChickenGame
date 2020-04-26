@@ -5,21 +5,22 @@ using UnityEngine;
 public class FireLine : MonoBehaviour {
     public Transform firePoint, shootEffect;
     public GameObject fireBall;
-    // public Rigidbody2D cook;
-    public int numberOfBalls = 10;
     private List<int> list = new List<int> () { 0, 1, 2, 4, 5, 9, 10, 11, 12 };
 
     private Vector2 speed;
 
     public float fireBallForce = 20f;
+    public float  fireRate=0.2f;
     public GameManager theGameManager;
+    static bool nextball = true;
 
     void Update () {
 
         if (GameObject.Find ("Chicken") != null) {
             float cookXpos = GameObject.Find ("Cook").transform.position.x;
             float chickenXpos = GameObject.Find ("Chicken").transform.position.x;
-            if (cookXpos > chickenXpos + 1f) {
+            if (cookXpos > chickenXpos + 1f && nextball) {
+                nextball = false;
                 StartCoroutine (FireLoop ());
             }
         }
@@ -27,6 +28,12 @@ public class FireLine : MonoBehaviour {
         if (Fireball.IsFried) {
             theGameManager.restartGame ();
             Fireball.IsFried = false;
+            // Destroy all fireball instances after chiches is dead
+            GameObject[] fireball_instances = GameObject.FindGameObjectsWithTag("Fireball"); 
+            foreach(GameObject fireball_instance in fireball_instances)
+            {
+                Destroy(fireball_instance);
+            }
         }
     }
 
@@ -37,13 +44,12 @@ public class FireLine : MonoBehaviour {
     }
 
     public IEnumerator FireLoop () {
-        for (int i = 0; i < numberOfBalls; i++) {
-            Fire ();
-            shootEffect.GetComponent<ParticleSystem> ().enableEmission = true;
-            Instantiate (shootEffect, GameObject.Find ("FirePoint").transform.position, Quaternion.identity);
-            StartCoroutine (stopShootEffect ());
-            yield return new WaitForSeconds (.2f);
-        }
+        Fire ();
+        shootEffect.GetComponent<ParticleSystem> ().enableEmission = true;
+        Instantiate (shootEffect, GameObject.Find ("FirePoint").transform.position, Quaternion.identity);
+        StartCoroutine (stopShootEffect ());
+        yield return new WaitForSeconds (fireRate);
+        nextball = true;
     }
 
     public IEnumerator stopShootEffect () {
