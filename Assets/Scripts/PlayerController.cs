@@ -115,10 +115,10 @@ public class PlayerController : MonoBehaviour {
                     if (airJumpCount == 1) {
                         Instantiate (pfDoubleJumpEffect, transform.position, Quaternion.identity);
                         rigid.velocity = Vector2.up * (jumpvelocity - 2f);
-                        ScoreScript.scoreValue--;
+                        ScoreScript.instance.ReduceScore();
                     } else {
                         rigid.velocity = Vector2.up * (jumpvelocity - 1f);
-                        ScoreScript.scoreValue = ScoreScript.scoreValue - 2;
+                        ScoreScript.instance.ReduceScore(2);
                     }
 
                     // rigid.AddForce(new Vector2(0, jumpForce));
@@ -133,7 +133,7 @@ public class PlayerController : MonoBehaviour {
         // item collider
         if (collision.gameObject.layer == 12) {
             if (collision.gameObject.tag == "Corn") {
-                ScoreScript.scoreValue++; // increase the score every time collide with a corn
+                ScoreScript.instance.AddScore(); // increase the score every time collide with a corn
                 theGameManager.managePlaySound (soundNames[0]);
             }
             if (!(collision.gameObject.tag == "Stationary")) {
