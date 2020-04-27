@@ -40,6 +40,14 @@ public class ScoreScript : MonoBehaviour {
         scoreValue = 0;
     }
 
+    // Current High score section
+    public void UpdateCurrentHighScore () {
+        currentHighScore = scoreValue > currentHighScore ? scoreValue : currentHighScore;
+    }
+    public void ResetCurrentHighScore () {
+        currentHighScore = 0;
+    }
+
     // High score section
     public void UpdateHighScore () {
         highScore = scoreValue > highScore ? scoreValue : highScore;
@@ -49,14 +57,6 @@ public class ScoreScript : MonoBehaviour {
     // Delete the global high score (only in game options)
     public void ClearHighScore(){
         PlayerPrefs.DeleteKey("HighScore");
-    }
-
-    // Current High score section
-    public void UpdateCurrentHighScore () {
-        currentHighScore = scoreValue > currentHighScore ? scoreValue : currentHighScore;
-    }
-    public void ResetCurrentHighScore () {
-        currentHighScore = 0;
     }
 
 }

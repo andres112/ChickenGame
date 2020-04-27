@@ -7,11 +7,13 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
+    private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        pauseMenuUI.SetActive(false);
+        gameManager = new GameManager();
+        pauseMenuUI.SetActive(false);        
     }
 
     // Update is called once per frame
@@ -43,11 +45,13 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = true;
     }
 
-    public void LoadMenu(){
-        Debug.Log("Menu Button");
+    public void Options(){
+        Debug.Log("Options Button");
     }
     public void Quit(){
-        // UnityEditor.EditorApplication.isPlaying = false;
-        Application.Quit();
+        GameIsPaused = false;
+        SceneManager.LoadScene("MainMenu");
+        // Reset the game variables
+        gameManager.ResetGameVariables();
     }
 }

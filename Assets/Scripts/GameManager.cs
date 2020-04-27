@@ -68,8 +68,17 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    IEnumerator StartDelay () {
+    // Reset Game Variables
+    public void ResetGameVariables(){
+        Health.health = 5;
+        Health.shield = 0;
+        ScoreScript.instance.ResetScore();
+        ScoreScript.instance.ResetCurrentHighScore();
+        GameManager.IsGameOver = false;
+    }
 
+    IEnumerator StartDelay () {
+        // Corutine for initial countdown
         Time.timeScale = 0;
         float pauseTime = Time.realtimeSinceStartup + 3.5f;
         while (Time.realtimeSinceStartup < pauseTime) {

@@ -7,8 +7,10 @@ using UnityEngine.SceneManagement;
 public class GameOverMenu : MonoBehaviour
 {
     public TextMeshProUGUI finalScore;
+    private GameManager gameManager;
 
     private void Start() {
+        gameManager = new GameManager();
         finalScore.text = ScoreScript.currentHighScore.ToString();
     }
 
@@ -17,14 +19,12 @@ public class GameOverMenu : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
 
         // Reset the game variables
-        GameManager.IsGameOver = false;
-        Health.health = 5;
-        ScoreScript.instance.ResetScore();
-        ScoreScript.instance.ResetCurrentHighScore();
+        gameManager.ResetGameVariables();
     }
 
-    public void Quit(){
-        // UnityEditor.EditorApplication.isPlaying = false;
-        Application.Quit();
+    public void Quit(){        
+        SceneManager.LoadScene("MainMenu");
+        // Reset the game variables
+        gameManager.ResetGameVariables();
     }
 }
