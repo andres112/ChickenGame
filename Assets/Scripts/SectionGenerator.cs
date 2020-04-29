@@ -58,4 +58,18 @@ public class SectionGenerator : MonoBehaviour
             
         }
     }
+
+    public void resetPrivateVariables()
+    {
+        StartCoroutine("ResetPrivateVariablesCo");
+    }
+
+    public void ResetPrivateVariablesCo()
+    {
+        constructionLevel = LevelScript.levelValue + 1;
+        nextLevelChange = sectionsPerLevel;
+        sectionCounter = 0;
+        platformWidth = theCheckpointSection.GetComponent<BoxCollider2D>().size.x * theCheckpointSection.transform.localScale.x;
+
+    }
 }

@@ -10,11 +10,21 @@ public class GameManager : MonoBehaviour {
     private AudioManager audioManager;
 
     public float speedUpFactor;
+
+    public SectionGenerator platformGeneration;
+    private Vector3 platformStartPosition;
+
     public PlayerController thePlayer;
+    private Vector3 playerStartPosition;
     private Vector3 playerCurrentPoint;
 
     public Cook theCook;
+    private Vector3 cookStartPosition;
     private Vector3 cookCurrentPoint;
+
+    private ObjectDestroyer[] objectList;
+
+    public GameObject startAreaFlag;
 
     private int currentLevel;
 
@@ -33,8 +43,16 @@ public class GameManager : MonoBehaviour {
         // Countdown before to start
         StartCoroutine ("StartDelay");
         // Take the initial position 
+
+        platformStartPosition = platformGeneration.transform.position;
+        cookStartPosition = theCook.transform.position;
+        playerStartPosition = thePlayer.transform.position; 
+
         cookCurrentPoint = theCook.transform.position;
         playerCurrentPoint = thePlayer.transform.position;
+
+        startAreaFlag.SetActive(false);
+        
 
         // TODO: // Set the game over screen in false 
         // gameOverScreen.SetActive(false);
@@ -110,11 +128,23 @@ public class GameManager : MonoBehaviour {
     }
 
     public IEnumerator RestartGameCo () {
+        startAreaFlag.SetActive(true);
+        startAreaFlag.GetComponent<Animator>().SetTrigger("active");
+
         thePlayer.gameObject.SetActive (false);
         yield return new WaitForSeconds (0.5f);
 
-        thePlayer.transform.position = playerCurrentPoint;
-        theCook.transform.position = cookCurrentPoint;
+        objectList = FindObjectsOfType<ObjectDestroyer>();
+        for (int i = 0; i < objectList.Length; i++)
+        {
+            Destroy(objectList[i].gameObject);
+        }
+
+        thePlayer.transform.position = playerStartPosition;
+        theCook.transform.position = cookStartPosition;
+        platformGeneration.transform.position = platformStartPosition;
+        platformGeneration.resetPrivateVariables();
+
         thePlayer.gameObject.SetActive (true);
 
         // Lifes and shields decresing logic
@@ -125,18 +155,25 @@ public class GameManager : MonoBehaviour {
         checkIsAlive ();
     }
     public IEnumerator RespawnGameCo () {
+        startAreaFlag.SetActive(true);
+        startAreaFlag.GetComponent<Animator>().SetTrigger("active");
+
         thePlayer.gameObject.SetActive (false);
         yield return new WaitForSeconds (0.2f);
 
-        thePlayer.transform.position = playerCurrentPoint;
-        theCook.transform.position = cookCurrentPoint;
-        thePlayer.gameObject.SetActive (true);
+        
 
         // Lifes and shields decresing logic
         if (Health.shield > 0) {
             Health.shield--;
+            thePlayer.transform.position = playerCurrentPoint;
+            theCook.transform.position = cookCurrentPoint;
+            thePlayer.gameObject.SetActive(true);
         } else {
             Health.health--;
+            thePlayer.transform.position = playerStartPosition;
+            theCook.transform.position = cookStartPosition;
+            platformGeneration.transform.position = platformStartPosition;
         }
         checkIsAlive ();
     }
