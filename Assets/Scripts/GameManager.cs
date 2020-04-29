@@ -24,6 +24,10 @@ public class GameManager : MonoBehaviour {
 
     private Hashtable sounds = new Hashtable ();
 
+    private void Awake() {
+        Screen.fullScreen = true;
+    }
+
     // Start is called before the first frame update
     void Start () {
         // Countdown before to start
@@ -66,6 +70,15 @@ public class GameManager : MonoBehaviour {
 
             currentLevel = LevelScript.levelValue;
         }
+
+
+        // Volume
+        if (PlayerPrefs.HasKey ("Volume")) {
+            AudioListener.volume = PlayerPrefs.GetFloat("Volume");
+        }  
+        else{
+            AudioListener.volume = 0.6f; // High graphics by default
+        } 
     }
 
     // Reset Game Variables

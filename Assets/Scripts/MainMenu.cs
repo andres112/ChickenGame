@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour {
     private GameManager gameManager;
 
+    private void Awake () {
+        Screen.fullScreen = true;
+    }
     private void Start () {
         gameManager = new GameManager ();
     }
@@ -19,7 +22,8 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void Options () {
-        Debug.Log ("Options Button");
+        PlayerPrefs.SetString ("Pre_Scene", SceneManager.GetActiveScene ().name);
+        SceneManager.LoadScene ("OptionMenu");
     }
 
     public void Exit () {

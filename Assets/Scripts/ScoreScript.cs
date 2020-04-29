@@ -9,11 +9,14 @@ public class ScoreScript : MonoBehaviour {
     public TextMeshProUGUI scoreUI, highScoreUI;
     // Start is called before the first frame update
 
-    private void Awake () {
+    private void Start () {
         instance = this;
         // Validate if HighScore variable exist in memory
         if (PlayerPrefs.HasKey ("HighScore")) {
             highScore = PlayerPrefs.GetInt ("HighScore");
+        }
+        else{
+            highScore = 0;
         }
     }
 
