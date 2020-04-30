@@ -16,11 +16,16 @@ public class GameManager : MonoBehaviour {
 
     public PlayerController thePlayer;
     private Vector3 playerStartPosition;
-    private Vector3 playerCurrentPoint;
+
+    public float invincibilityLength;
+    private float invincibilityCounter;
+    public float blinkLength;
+    private float blinkCounter;
+
+    public Vector2 hurtImpulse;
 
     public Cook theCook;
     private Vector3 cookStartPosition;
-    private Vector3 cookCurrentPoint;
 
     private ObjectDestroyer[] objectList;
 
@@ -48,8 +53,6 @@ public class GameManager : MonoBehaviour {
         cookStartPosition = theCook.transform.position;
         playerStartPosition = thePlayer.transform.position; 
 
-        cookCurrentPoint = theCook.transform.position;
-        playerCurrentPoint = thePlayer.transform.position;
 
         startAreaFlag.SetActive(false);
         
@@ -71,10 +74,26 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Update () {
-        cookCurrentPoint = theCook.transform.position;
-        playerCurrentPoint = thePlayer.transform.position;
-        playerCurrentPoint.x = cookCurrentPoint.x + 10f;
-        playerCurrentPoint.y = -3; // over the ground
+        if (invincibilityCounter > 0)
+        {
+            invincibilityCounter -= Time.deltaTime;
+            if (blinkCounter > 0)
+            {
+                blinkCounter -= Time.deltaTime;
+            }
+            else
+            {
+                blinkCounter = blinkLength;
+                thePlayer.GetComponent<SpriteRenderer>().enabled = !thePlayer.GetComponent<SpriteRenderer>().enabled;
+            }
+        }
+        else
+        {
+            thePlayer.GetComponent<SpriteRenderer>().enabled = true;
+        }
+
+        
+
         if (!once_flag) {
             this.managePlaySound ((string) sounds["background"]);
             once_flag = true;
@@ -156,25 +175,38 @@ public class GameManager : MonoBehaviour {
     }
     public IEnumerator RespawnGameCo () {
         startAreaFlag.SetActive(true);
-        startAreaFlag.GetComponent<Animator>().SetTrigger("active");
+        startAreaFlag.GetComponent<Animator>().SetTrigger("active");    
+        if (invincibilityCounter <= 0)
+        {
+            // Lifes and shields decresing logic
+            if (Health.shield > 0)
+            {
+                Health.shield--;
+                //hurt + invincibility frames
+                invincibilityCounter = invincibilityLength;
+                blinkCounter = blinkLength;
+                thePlayer.GetComponent<SpriteRenderer>().enabled = false;
+                //knockback when hurt
+                Rigidbody2D player_rigidbody = thePlayer.GetComponent<Rigidbody2D>();
+                Vector2 velocity = new Vector2(player_rigidbody.velocity.x, 0);
+                player_rigidbody.velocity = velocity;
 
-        thePlayer.gameObject.SetActive (false);
-        yield return new WaitForSeconds (0.2f);
+                player_rigidbody.AddForce(hurtImpulse, ForceMode2D.Impulse);
+            }
+            else
+            {
+                //Respawn at the beginning of the level
+                Health.health--;
 
-        
-
-        // Lifes and shields decresing logic
-        if (Health.shield > 0) {
-            Health.shield--;
-            thePlayer.transform.position = playerCurrentPoint;
-            theCook.transform.position = cookCurrentPoint;
-            thePlayer.gameObject.SetActive(true);
-        } else {
-            Health.health--;
-            thePlayer.transform.position = playerStartPosition;
-            theCook.transform.position = cookStartPosition;
-            platformGeneration.transform.position = platformStartPosition;
+                thePlayer.gameObject.SetActive(false);
+                yield return new WaitForSeconds(0.2f);
+                thePlayer.transform.position = playerStartPosition;
+                theCook.transform.position = cookStartPosition;
+                platformGeneration.transform.position = platformStartPosition;
+                thePlayer.gameObject.SetActive(true);
+            }
         }
+
         checkIsAlive ();
     }
 
