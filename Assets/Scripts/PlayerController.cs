@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
@@ -27,13 +28,13 @@ public class PlayerController : MonoBehaviour {
     public Transform groundCheck;
     float groundRadius = 0.2f;
     public LayerMask whatIsGround;
-    public float jumpForce = 500f;
 
     // Velocity settings
     public float InertiaSpeed, AccelerationSpeed, GroundSpeed, SkySpeed;
 
     // Validate is on platforms
     private bool IsPlatform = false;
+    private string timerOnBy;
 
     // The game manager
     public GameManager theGameManager;
@@ -46,6 +47,11 @@ public class PlayerController : MonoBehaviour {
     // 4 - NewLifeSound
     public string[] soundNames;
 
+    public TextMeshProUGUI timeLeftText;
+    // Control variables when restrictions are enabled
+    private float Original_AccelerationSpeed, Original_SkySpeed;
+    private bool canJump;
+
     private void Awake () {
         airJumpCountMax = 2;
     }
@@ -55,6 +61,9 @@ public class PlayerController : MonoBehaviour {
         //set anim to our animator
         anim = GetComponent<Animator> ();
         rigid = GetComponent<Rigidbody2D> ();
+        Original_AccelerationSpeed = AccelerationSpeed;
+        Original_SkySpeed = SkySpeed;
+        canJump = true;
     }
 
     // Update is called once per frame
@@ -90,6 +99,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update () {
+        this.CheckRestrictions(timerOnBy);
 
         if (grounded) {
             airJumpCount = 0;
@@ -98,13 +108,12 @@ public class PlayerController : MonoBehaviour {
 
         //if we are on the ground and the space bar was pressed, change our ground state and add an upward force
         // 
-        if (Input.GetKey (KeyCode.Space)) {
+        if (Input.GetKey (KeyCode.Space) && canJump) {
 
             if (grounded) {
                 // Normal Jump
                 anim.SetBool ("Ground", false);
                 rigid.velocity = Vector2.up * jumpvelocity;
-                // rigid.AddForce(new Vector2(0, jumpForce));
 
                 // Sound When player jump
                 theGameManager.managePlaySound (soundNames[1]);
@@ -115,13 +124,11 @@ public class PlayerController : MonoBehaviour {
                     if (airJumpCount == 1) {
                         Instantiate (pfDoubleJumpEffect, transform.position, Quaternion.identity);
                         rigid.velocity = Vector2.up * (jumpvelocity - 2f);
-                        ScoreScript.instance.ReduceScore();
+                        ScoreScript.instance.ReduceScore ();
                     } else {
                         rigid.velocity = Vector2.up * (jumpvelocity - 1f);
-                        ScoreScript.instance.ReduceScore(2);
+                        ScoreScript.instance.ReduceScore (2);
                     }
-
-                    // rigid.AddForce(new Vector2(0, jumpForce));
                     airJumpCount++;
                 }
             }
@@ -133,7 +140,7 @@ public class PlayerController : MonoBehaviour {
         // item collider
         if (collision.gameObject.layer == 12) {
             if (collision.gameObject.tag == "Corn") {
-                ScoreScript.instance.AddScore(); // increase the score every time collide with a corn
+                ScoreScript.instance.AddScore (); // increase the score every time collide with a corn
                 theGameManager.managePlaySound (soundNames[0]);
             }
             if (!(collision.gameObject.tag == "Stationary")) {
@@ -177,8 +184,43 @@ public class PlayerController : MonoBehaviour {
                 Health.health++; // increase the shield every time collide with a blue hearth
                 theGameManager.managePlaySound (soundNames[4]);
             }
+            // Ice Cube Collision
+            if (collision.gameObject.tag == "Ice Cube") {
+                theGameManager.managePlaySound (soundNames[2]);
+                CountDown.timeLeft = 10f;
+                CountDown.IsTimerOn = true;
+                timerOnBy = "Ice Cube";
+                timeLeftText.gameObject.SetActive (true);
+            }
+            // Anvil Collision
+            if (collision.gameObject.tag == "Anvil") {
+                theGameManager.managePlaySound (soundNames[2]);
+                CountDown.timeLeft = 5f;
+                CountDown.IsTimerOn = true;
+                timerOnBy = "Anvil";
+                timeLeftText.gameObject.SetActive (true);
+            }
             collision.gameObject.SetActive (false);
             Destroy (collision.gameObject); // destroy the item wich collides
+        }
+    }
+
+    void CheckRestrictions (string restriction) {
+        if (CountDown.IsTimerOn) {
+            switch (restriction) {
+                case "Ice Cube":
+                    AccelerationSpeed = GroundSpeed;
+                    SkySpeed = GroundSpeed;
+                    break;
+                case "Anvil":
+                    canJump = false;
+                    SkySpeed = InertiaSpeed;
+                    break;
+            }
+        }else{
+            AccelerationSpeed = Original_AccelerationSpeed;
+            SkySpeed = Original_SkySpeed;
+            canJump = true;
         }
     }
 

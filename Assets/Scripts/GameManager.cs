@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour {
     void Start () {
         // Countdown before to start
         StartCoroutine ("StartDelay");
+        GameObject.Find ("TimeLeft").SetActive(false);
         // Take the initial position 
 
         platformStartPosition = platformGeneration.transform.position;
