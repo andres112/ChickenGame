@@ -125,6 +125,7 @@ public class PlayerController : MonoBehaviour {
                         Instantiate (pfDoubleJumpEffect, transform.position, Quaternion.identity);
                         rigid.velocity = Vector2.up * (jumpvelocity - 2f);
                         ScoreScript.instance.ReduceScore ();
+                        
                     } else {
                         rigid.velocity = Vector2.up * (jumpvelocity - 1f);
                         ScoreScript.instance.ReduceScore (2);

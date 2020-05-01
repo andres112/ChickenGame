@@ -17,6 +17,7 @@ TagManager:
   - Fireball
   - Ice Cube
   - Anvil
+  - BirdGFX_Tag
   layers:
   - Default
   - TransparentFX
@@ -31,7 +32,7 @@ TagManager:
   - Platform
   - Enemy
   - Items
-  - 
+  - BirdGFX
   - 
   - 
   - 
