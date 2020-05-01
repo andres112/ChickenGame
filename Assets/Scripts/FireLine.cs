@@ -19,7 +19,7 @@ public class FireLine : MonoBehaviour {
         if (GameObject.Find ("Chicken") != null) {
             float cookXpos = GameObject.Find ("Cook").transform.position.x;
             float chickenXpos = GameObject.Find ("Chicken").transform.position.x;
-            if (cookXpos > chickenXpos + 1f && nextball) {
+            if (cookXpos > chickenXpos && nextball) {
                 nextball = false;
                 StartCoroutine (FireLoop ());
             }
