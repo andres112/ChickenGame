@@ -38,7 +38,7 @@ public class GenerateItems : MonoBehaviour {
             if (other_timeLeft <= 0) {
                 Transform currentItem = bad_items[ran.Next (0, bad_items.Count)];
                 SpawnLevelPart (currentItem, viewPosition);
-                other_timeLeft = Random.Range (seedTime * 0.25f, seedTime * 0.75f);
+                other_timeLeft = Random.Range (seedTime * 0.1f, seedTime * 0.75f);
             }
         }
     }

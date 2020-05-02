@@ -45,12 +45,14 @@ public class PlayerController : MonoBehaviour {
     // 2 - DeathSound
     // 3 - ShieldSound
     // 4 - NewLifeSound
+    // 5 - IceCubeSound
+    // 6 - AnvilSound
     public string[] soundNames;
 
     public TextMeshProUGUI timeLeftText;
     // Control variables when restrictions are enabled
     private float Original_AccelerationSpeed, Original_SkySpeed;
-    private bool canJump;
+    private bool canJump, IsIceCube;
 
     private void Awake () {
         airJumpCountMax = 2;
@@ -99,7 +101,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update () {
-        this.CheckRestrictions(timerOnBy);
+        this.CheckRestrictions (timerOnBy);
 
         if (grounded) {
             airJumpCount = 0;
@@ -125,7 +127,7 @@ public class PlayerController : MonoBehaviour {
                         Instantiate (pfDoubleJumpEffect, transform.position, Quaternion.identity);
                         rigid.velocity = Vector2.up * (jumpvelocity - 2f);
                         ScoreScript.instance.ReduceScore ();
-                        
+
                     } else {
                         rigid.velocity = Vector2.up * (jumpvelocity - 1f);
                         ScoreScript.instance.ReduceScore (2);
@@ -187,15 +189,20 @@ public class PlayerController : MonoBehaviour {
             }
             // Ice Cube Collision
             if (collision.gameObject.tag == "Ice Cube") {
-                theGameManager.managePlaySound (soundNames[2]);
+                theGameManager.managePlaySound (soundNames[5]);
                 CountDown.timeLeft = 10f;
                 CountDown.IsTimerOn = true;
                 timerOnBy = "Ice Cube";
                 timeLeftText.gameObject.SetActive (true);
+                anim.speed = 0.5f;
+                theGameManager.managePauseSound ("Background");
+                theGameManager.managePitchSound ("Background", 0.8f);
+                theGameManager.once_flag = false;
+                IsIceCube = true;
             }
             // Anvil Collision
             if (collision.gameObject.tag == "Anvil") {
-                theGameManager.managePlaySound (soundNames[2]);
+                theGameManager.managePlaySound (soundNames[6]);
                 CountDown.timeLeft = 5f;
                 CountDown.IsTimerOn = true;
                 timerOnBy = "Anvil";
@@ -218,10 +225,19 @@ public class PlayerController : MonoBehaviour {
                     SkySpeed = InertiaSpeed;
                     break;
             }
-        }else{
+        } else {
             AccelerationSpeed = Original_AccelerationSpeed;
             SkySpeed = Original_SkySpeed;
             canJump = true;
+            anim.speed = 1;
+            // First is required to pause the audio to reconfigure the features//
+            if (IsIceCube) {
+                theGameManager.managePauseSound ("Background");
+                theGameManager.managePitchSound ("Background", 0.95f);
+                theGameManager.once_flag = false;
+                IsIceCube = false;
+            }
+            //******************************************//
         }
     }
 

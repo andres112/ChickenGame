@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour {
 
     private int currentLevel;
 
-    private bool once_flag = false;
+    public bool once_flag = false;
 
     public GameObject countdown;
 
@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour {
         
 
         if (!once_flag) {
-            this.managePlaySound ((string) sounds["background"]);
+            managePlaySound ((string) sounds["background"]);
             once_flag = true;
         }
         if (currentLevel < LevelScript.levelValue) {
@@ -148,6 +148,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public IEnumerator RestartGameCo () {
+        CountDown.timeLeft = 0;
         startAreaFlag.SetActive(true);
         startAreaFlag.GetComponent<Animator>().SetTrigger("active");
 
@@ -226,6 +227,14 @@ public class GameManager : MonoBehaviour {
 
     public void manageStopSound (string _name) {
         audioManager.StopSound (_name);
+    }
+
+    public void managePauseSound (string _name) {
+        audioManager.PauseSound (_name);
+    }
+
+    public void managePitchSound (string _name, float newPitch) {
+        audioManager.UpdatePitch (_name, newPitch);
     }
 
 }

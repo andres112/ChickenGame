@@ -5,7 +5,7 @@ using UnityEngine;
 public class Fireball : MonoBehaviour {
     private AudioManager audioManager;
     public Transform hitEffect;
-    private List<int> list = new List<int> () { 0, 1, 2, 4, 5, 10, 11, 12 };
+    private List<int> list = new List<int> () { 0, 1, 2, 4, 5, 11, 12 };
 
     public static bool IsFried = false;
 
@@ -30,12 +30,20 @@ public class Fireball : MonoBehaviour {
             Instantiate (hitEffect, transform.position, Quaternion.identity);
             audioManager.PlaySound ("Die");
             StartCoroutine (stopEffect ());
+            IsFried = true;
             Destroy (gameObject);
+        }
+
+        if (collision.gameObject.layer == 10) {
+            hitEffect.GetComponent<ParticleSystem> ().enableEmission = true;
+            Instantiate (hitEffect, transform.position, Quaternion.identity);
+            StartCoroutine (stopEffect ());
+            Destroy (gameObject);
+            Destroy(collision.gameObject);
         }
     }
 
     public IEnumerator stopEffect () {
-        IsFried = true;
         yield return new WaitForSeconds (0.3f);
         hitEffect.GetComponent<ParticleSystem> ().enableEmission = false;
         hitEffect.GetComponent<ParticleSystem> ().Clear ();
