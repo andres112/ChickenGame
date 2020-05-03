@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour {
 
     // Velocity settings
     public float InertiaSpeed, AccelerationSpeed, GroundSpeed, SkySpeed;
+    // Control variables when restrictions are enabled
+    private float Original_AccelerationSpeed, Original_SkySpeed, Original_GroundSpeed;
 
     // Validate is on platforms
     private bool IsPlatform = false;
@@ -47,11 +49,12 @@ public class PlayerController : MonoBehaviour {
     // 4 - NewLifeSound
     // 5 - IceCubeSound
     // 6 - AnvilSound
+    // 7 - ThunderSound
+    // 8 - SpeedUpSound
+    // 9 - NoJumpSound
     public string[] soundNames;
 
     public TextMeshProUGUI timeLeftText;
-    // Control variables when restrictions are enabled
-    private float Original_AccelerationSpeed, Original_SkySpeed;
     private bool canJump, IsIceCube;
 
     private void Awake () {
@@ -65,6 +68,7 @@ public class PlayerController : MonoBehaviour {
         rigid = GetComponent<Rigidbody2D> ();
         Original_AccelerationSpeed = AccelerationSpeed;
         Original_SkySpeed = SkySpeed;
+        Original_GroundSpeed = GroundSpeed;
         canJump = true;
     }
 
@@ -101,6 +105,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update () {
+        // Verify the status of player acording to restrictions
         this.CheckRestrictions (timerOnBy);
 
         if (grounded) {
@@ -110,9 +115,11 @@ public class PlayerController : MonoBehaviour {
 
         //if we are on the ground and the space bar was pressed, change our ground state and add an upward force
         // 
-        if (Input.GetKey (KeyCode.Space) && canJump) {
-
-            if (grounded) {
+        if (Input.GetKey (KeyCode.Space)) {
+            if(!canJump){
+                theGameManager.managePlaySound("NoJump");
+            }
+            else if (grounded) {
                 // Normal Jump
                 anim.SetBool ("Ground", false);
                 rigid.velocity = Vector2.up * jumpvelocity;
@@ -135,6 +142,16 @@ public class PlayerController : MonoBehaviour {
                     airJumpCount++;
                 }
             }
+        }
+
+        // When player click on Up arrow to increase velocity temporarly
+        if (Input.GetKey (KeyCode.UpArrow) && Power.power > 0 && !CountDown.IsTimerOn) {
+            CountDown.timeLeft = 2f;
+            CountDown.IsTimerOn = true;
+            timerOnBy = "Thunder";
+            anim.speed = 1.5f;
+            Power.DecreasePower();
+            theGameManager.managePlaySound (soundNames[8]);
         }
     }
 
@@ -178,14 +195,19 @@ public class PlayerController : MonoBehaviour {
             // Shield collision
             if (collision.gameObject.tag == "Shield" & Health.shield < Health.health) {
                 // increase the shield every time collide with a blue hearth if the shield is less than health
-                Health.shield++;
+                Health.IncreaseShield();
                 theGameManager.managePlaySound (soundNames[3]);
 
             }
             // New Life Collision
             if (collision.gameObject.tag == "Life") {
-                Health.health++; // increase the shield every time collide with a blue hearth
+                Health.IncreaseHealth(); // increase the shield every time collide with a blue hearth
                 theGameManager.managePlaySound (soundNames[4]);
+            }
+            // Thunder Collision - Power up
+            if (collision.gameObject.tag == "Thunder") {
+                Power.IncreasePower(); // increase the power every time collide with a thunder
+                theGameManager.managePlaySound (soundNames[7]);
             }
             // Ice Cube Collision
             if (collision.gameObject.tag == "Ice Cube") {
@@ -194,7 +216,8 @@ public class PlayerController : MonoBehaviour {
                 CountDown.IsTimerOn = true;
                 timerOnBy = "Ice Cube";
                 timeLeftText.gameObject.SetActive (true);
-                anim.speed = 0.5f;
+                theGameManager.manageStopSound ("SpeedUp"); // Stop Speed up sound
+                // Modify Background pitch for slow motion sensation
                 theGameManager.managePauseSound ("Background");
                 theGameManager.managePitchSound ("Background", 0.8f);
                 theGameManager.once_flag = false;
@@ -214,15 +237,22 @@ public class PlayerController : MonoBehaviour {
     }
 
     void CheckRestrictions (string restriction) {
+        GroundSpeed = Original_GroundSpeed;
         if (CountDown.IsTimerOn) {
             switch (restriction) {
                 case "Ice Cube":
                     AccelerationSpeed = GroundSpeed;
                     SkySpeed = GroundSpeed;
+                    anim.speed = 0.5f;                    
                     break;
                 case "Anvil":
                     canJump = false;
-                    SkySpeed = InertiaSpeed;
+                    SkySpeed = GroundSpeed;
+                    break;
+                case "Thunder":
+                    GroundSpeed = 1;
+                    AccelerationSpeed = GroundSpeed;
+                    SkySpeed = GroundSpeed;
                     break;
             }
         } else {

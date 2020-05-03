@@ -7,9 +7,13 @@ public class ItemBehavior : MonoBehaviour {
     public Transform bottom;
 
     public void OnTriggerEnter2D (Collider2D collision) {
-        // item collider
+        // Destroy other element
         if (collision.gameObject.layer == 12 && destroyObject) {
             Destroy(collision.gameObject);
+        }
+        // Destroy element itself
+        if (collision.gameObject.tag == "Deadly Hazard" && destroyObject) {
+            Destroy(gameObject);
         }
     }
 }

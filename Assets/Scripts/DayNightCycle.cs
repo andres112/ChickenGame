@@ -52,7 +52,7 @@ public class DayNightCycle : MonoBehaviour {
         // every N cycles the player win a hearth if health is less than MaxHealth
         if (currentTime == 300) {
             count_days++;
-            if (count_days >= days_to_win) {                
+            if (count_days >= days_to_win && days_to_win > 0) {                
                 if (Health.health < Health.MaxHealth) {
                     Health.health++;
                 }

@@ -170,9 +170,9 @@ public class GameManager : MonoBehaviour {
 
         // Lifes and shields decresing logic
         if (Health.health == Health.shield) {
-            Health.shield--;
+            Health.DecreaseShield();
         }
-        Health.health--;
+        Health.DecreaseHealth();;
         checkIsAlive ();
     }
     public IEnumerator RespawnGameCo () {
@@ -183,7 +183,7 @@ public class GameManager : MonoBehaviour {
             // Lifes and shields decresing logic
             if (Health.shield > 0)
             {
-                Health.shield--;
+                Health.DecreaseShield();
                 //hurt + invincibility frames
                 invincibilityCounter = invincibilityLength;
                 blinkCounter = blinkLength;
@@ -198,7 +198,7 @@ public class GameManager : MonoBehaviour {
             else
             {
                 //Respawn at the beginning of the level
-                Health.health--;
+                Health.DecreaseHealth();
 
                 thePlayer.gameObject.SetActive(false);
                 yield return new WaitForSeconds(0.2f);

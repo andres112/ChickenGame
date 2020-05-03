@@ -35,4 +35,20 @@ public class Health : MonoBehaviour
             }
         }
     }
+
+    public static void IncreaseHealth () {
+        if (health < MaxHealth) health++;
+    }
+
+    public static void DecreaseHealth () {
+        if (health > 0) health--;
+    }
+
+    public static void IncreaseShield () {
+        if (shield < MaxShield) shield++;
+    }
+
+    public static void DecreaseShield () {
+        if (shield > 0) shield--;
+    }
 }
