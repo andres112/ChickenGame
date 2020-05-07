@@ -19,6 +19,7 @@ TagManager:
   - Anvil
   - BirdGFX_Tag
   - Thunder
+  - Goal
   layers:
   - Default
   - TransparentFX

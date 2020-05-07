@@ -158,14 +158,25 @@ public class PlayerController : MonoBehaviour {
     // detect collision and trigger destroy element (corn)
     public void OnTriggerEnter2D (Collider2D collision) {
         // item collider
-        if (collision.gameObject.layer == 12) {
-            if (collision.gameObject.tag == "Corn") {
-                ScoreScript.instance.AddScore (); // increase the score every time collide with a corn
-                theGameManager.managePlaySound (soundNames[0]);
+        if (collision.gameObject.layer == 12)
+        {
+            if (collision.gameObject.tag == "Corn")
+            {
+                ScoreScript.instance.AddScore(); // increase the score every time collide with a corn
+                theGameManager.managePlaySound(soundNames[0]);
             }
-            if (!(collision.gameObject.tag == "Stationary")) {
-                collision.gameObject.SetActive (false);
-                Destroy (collision.gameObject); // destroy the item wich collides
+            if (!(collision.gameObject.tag == "Stationary"))
+            {
+                collision.gameObject.SetActive(false);
+                Destroy(collision.gameObject); // destroy the item wich collides
+            }
+        }
+        else
+        {
+            if (collision.gameObject.tag == "Goal")
+            {
+                theGameManager.restartGame();
+                theGameManager.managePlaySound(soundNames[2]);
             }
         }
     }
