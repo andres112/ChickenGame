@@ -11,8 +11,8 @@ public class Wolf : MonoBehaviour
     public int delta;
     public float speed;
     public bool forward;
-    public float jumpForce = 7f;
-    public LayerMask groundLayers;
+    //public float jumpForce = 7f;
+    //public LayerMask groundLayers;
 
     // Start is called before the first frame update
     void Start()
@@ -50,7 +50,7 @@ public class Wolf : MonoBehaviour
                 transform.position = newPosition;
             }
 
-            rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+           // rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
 
             /*if (transform.position.x > fTurningPoint.x)
             {

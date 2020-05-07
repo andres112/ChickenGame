@@ -46,10 +46,6 @@ MonoBehaviour:
   delta: 5
   speed: 0.05
   forward: 0
-  jumpForce: 7
-  groundLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &7749504820138473024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,10 +62,6 @@ MonoBehaviour:
   delta: 5
   speed: 0.04
   forward: 0
-  jumpForce: 7
-  groundLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1001 &1486260799487558874
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -730,12 +722,12 @@ PrefabInstance:
     - target: {fileID: 5129994519224795229, guid: 4bdc7dbfc2532184abb5eabaca26fbc8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.644
+      value: 7.52
       objectReference: {fileID: 0}
     - target: {fileID: 5129994519224795229, guid: 4bdc7dbfc2532184abb5eabaca26fbc8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.427
+      value: 1.46
       objectReference: {fileID: 0}
     - target: {fileID: 5129994519224795229, guid: 4bdc7dbfc2532184abb5eabaca26fbc8,
         type: 3}
@@ -1531,12 +1523,12 @@ PrefabInstance:
     - target: {fileID: 5129994519224795229, guid: 4bdc7dbfc2532184abb5eabaca26fbc8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.672
+      value: 1.98
       objectReference: {fileID: 0}
     - target: {fileID: 5129994519224795229, guid: 4bdc7dbfc2532184abb5eabaca26fbc8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.428
+      value: 1.49
       objectReference: {fileID: 0}
     - target: {fileID: 5129994519224795229, guid: 4bdc7dbfc2532184abb5eabaca26fbc8,
         type: 3}
