@@ -175,8 +175,7 @@ public class PlayerController : MonoBehaviour {
         {
             if (collision.gameObject.tag == "Goal")
             {
-                theGameManager.restartGame();
-                theGameManager.managePlaySound(soundNames[2]);
+                theGameManager.winGame();
             }
         }
     }

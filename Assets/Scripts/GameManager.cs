@@ -147,6 +147,12 @@ public class GameManager : MonoBehaviour {
         StartCoroutine ("RespawnGameCo");
     }
 
+    public void winGame()
+    {
+        this.manageStopSound((string)sounds["background"]); // stop background sound when player wins
+        SceneManager.LoadScene("WinScreen");
+    }
+
     public IEnumerator RestartGameCo () {
         CountDown.timeLeft = 0;
         startAreaFlag.SetActive(true);
@@ -211,6 +217,7 @@ public class GameManager : MonoBehaviour {
 
         checkIsAlive ();
     }
+
 
     private void checkIsAlive () {
         if (Health.health <= 0) {
