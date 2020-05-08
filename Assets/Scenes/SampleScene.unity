@@ -606,6 +606,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7735734b1a54d4448abbeddce06f637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thePlainSection: {fileID: 4160899786582090079, guid: 17924c65ccab97d439e1838b90205eca,
+    type: 3}
+  theGoalSection: {fileID: 949724903285154052, guid: 511be9adf3431db4ba36aa4b0d1e430a,
+    type: 3}
   theCheckpointSection: {fileID: 817244013854907058, guid: 49d03a4f5354f8f4fb0542409e2fef11,
     type: 3}
   theSections:
@@ -622,6 +626,7 @@ MonoBehaviour:
   generationPoint: {fileID: 571052590}
   sectionsPerLevel: 1
   sectionsIncrement: 1
+  max_level: 6
 --- !u!4 &262142614
 Transform:
   m_ObjectHideFlags: 0
