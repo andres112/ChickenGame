@@ -159,21 +159,23 @@ public class GameManager : MonoBehaviour {
         startAreaFlag.GetComponent<Animator>().SetTrigger("active");
 
         thePlayer.gameObject.SetActive (false);
-        yield return new WaitForSeconds (0.5f);
-
+        yield return new WaitForSeconds(0.25f);
         objectList = FindObjectsOfType<ObjectDestroyer>();
         for (int i = 0; i < objectList.Length; i++)
         {
             Destroy(objectList[i].gameObject);
         }
 
+        
         thePlayer.transform.position = playerStartPosition;
         theCook.transform.position = cookStartPosition;
         platformGeneration.transform.position = platformStartPosition;
         platformGeneration.resetPrivateVariables();
 
+        
         thePlayer.gameObject.SetActive (true);
 
+        yield return new WaitForSeconds(0.25f);
         // Lifes and shields decresing logic
         if (Health.health == Health.shield) {
             Health.DecreaseShield();
