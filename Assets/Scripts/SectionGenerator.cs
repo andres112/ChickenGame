@@ -23,7 +23,7 @@ public class SectionGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        constructionLevel = 1;
+        constructionLevel = 0;
         nextLevelChange = sectionsPerLevel;
         sectionCounter = 0;
         platformWidth = theCheckpointSection.GetComponent<BoxCollider2D>().size.x * theCheckpointSection.transform.localScale.x;
@@ -36,8 +36,7 @@ public class SectionGenerator : MonoBehaviour
         if(transform.position.x < generationPoint.position.x){
             if(sectionCounter >= nextLevelChange){
                 constructionLevel++;
-                sectionsPerLevel = sectionsPerLevel + sectionsIncrement;
-                nextLevelChange = nextLevelChange + sectionsPerLevel;
+                nextLevelChange = sectionsPerLevel * (1 + constructionLevel) + (sectionsIncrement * constructionLevel);
                 levelchange = true;
             }
             if (levelchange){
@@ -94,9 +93,16 @@ public class SectionGenerator : MonoBehaviour
 
     public void ResetPrivateVariablesCo()
     {
-        constructionLevel = LevelScript.levelValue + 1;
-        nextLevelChange = sectionsPerLevel;
-        sectionCounter = 0;
+        constructionLevel = LevelScript.levelValue;
+        nextLevelChange = sectionsPerLevel * (1 + constructionLevel) + (sectionsIncrement* constructionLevel);
+        if (constructionLevel == 0)
+        {
+            sectionCounter = 0;
+        }
+        else {
+            sectionCounter = (sectionsPerLevel * constructionLevel) + sectionsIncrement * (constructionLevel - 1);
+        }
+        
         platformWidth = theCheckpointSection.GetComponent<BoxCollider2D>().size.x * theCheckpointSection.transform.localScale.x;
         goalSet = false;
     }

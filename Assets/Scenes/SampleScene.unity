@@ -626,7 +626,7 @@ MonoBehaviour:
   generationPoint: {fileID: 571052590}
   sectionsPerLevel: 1
   sectionsIncrement: 1
-  max_level: 6
+  max_level: 5
 --- !u!4 &262142614
 Transform:
   m_ObjectHideFlags: 0
