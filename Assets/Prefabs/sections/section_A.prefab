@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   delta: 5
-  speed: 0.05
+  speed: 0.02
   forward: 0
 --- !u!1001 &77704833400774568
 PrefabInstance:
@@ -900,12 +900,12 @@ PrefabInstance:
     - target: {fileID: 5129994519224795229, guid: 4bdc7dbfc2532184abb5eabaca26fbc8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.98
+      value: 3.48
       objectReference: {fileID: 0}
     - target: {fileID: 5129994519224795229, guid: 4bdc7dbfc2532184abb5eabaca26fbc8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.01
+      value: 3.93
       objectReference: {fileID: 0}
     - target: {fileID: 5129994519224795229, guid: 4bdc7dbfc2532184abb5eabaca26fbc8,
         type: 3}
