@@ -256,6 +256,7 @@ public class PlayerController : MonoBehaviour {
                     anim.speed = 0.5f;                    
                     break;
                 case "Anvil":
+                    anim.SetBool("Metal", true);
                     canJump = false;
                     SkySpeed = GroundSpeed;
                     break;
@@ -269,6 +270,7 @@ public class PlayerController : MonoBehaviour {
             AccelerationSpeed = Original_AccelerationSpeed;
             SkySpeed = Original_SkySpeed;
             canJump = true;
+            anim.SetBool("Metal", false);
             anim.speed = 1;
             // First is required to pause the audio to reconfigure the features//
             if (IsIceCube) {
