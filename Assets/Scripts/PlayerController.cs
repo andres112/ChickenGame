@@ -251,16 +251,21 @@ public class PlayerController : MonoBehaviour {
         if (CountDown.IsTimerOn) {
             switch (restriction) {
                 case "Ice Cube":
+                    anim.SetBool("Metal", false);
+                    anim.SetBool("Super", false);
                     AccelerationSpeed = GroundSpeed;
                     SkySpeed = GroundSpeed;
                     anim.speed = 0.5f;                    
                     break;
                 case "Anvil":
                     anim.SetBool("Metal", true);
+                    anim.SetBool("Super", false);
                     canJump = false;
                     SkySpeed = GroundSpeed;
                     break;
                 case "Thunder":
+                    anim.SetBool("Super", true);
+                    anim.SetBool("Metal", false);
                     GroundSpeed = 1;
                     AccelerationSpeed = GroundSpeed;
                     SkySpeed = GroundSpeed;
@@ -271,6 +276,7 @@ public class PlayerController : MonoBehaviour {
             SkySpeed = Original_SkySpeed;
             canJump = true;
             anim.SetBool("Metal", false);
+            anim.SetBool("Super", false);
             anim.speed = 1;
             // First is required to pause the audio to reconfigure the features//
             if (IsIceCube) {
