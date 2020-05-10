@@ -11,7 +11,7 @@ public class Wolf : MonoBehaviour
     public int delta;
     public float speed;
     public bool forward;
-    //public float jumpForce = 7f;
+    //public float jumpForce;
     //public LayerMask groundLayers;
 
     // Start is called before the first frame update
@@ -65,20 +65,6 @@ public class Wolf : MonoBehaviour
                 forward = true;
             }*/
         }
-        /*CharacterController controller = GetComponent<CharacterController>();
-        if (controller.isGrounded)
-        {
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            moveDirection = transform.TransformDirection(moveDirection);
-            moveDirection *= movespeed;
-            if (Input.GetButton("Jump"))
-                moveDirection.y = movespeed;
-
-        }
-        moveDirection.y -= Gravity * Time.deltaTime;
-        controller.Move(moveDirection * Time.deltaTime); 
-        //transform.Rotate(Vector3.left * movespeed * Time.deltaTime);*/
-
-
+       
     }
 }
