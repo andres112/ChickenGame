@@ -297,10 +297,6 @@ MonoBehaviour:
   delta: 4
   speed: 0.04
   forward: 0
-  jumpForce: 7
-  groundLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1001 &181103456905782325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -451,12 +447,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -643,12 +639,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -728,12 +724,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -813,12 +809,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -1068,12 +1064,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -1153,12 +1149,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -1238,12 +1234,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -1323,12 +1319,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -1408,12 +1404,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -1584,12 +1580,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -1669,12 +1665,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -1839,12 +1835,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -2009,12 +2005,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -2094,12 +2090,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -2179,12 +2175,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -2349,12 +2345,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -2434,12 +2430,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -2519,12 +2515,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -2689,12 +2685,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -2944,12 +2940,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -3284,12 +3280,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -3369,12 +3365,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -3624,12 +3620,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -3709,12 +3705,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -3879,12 +3875,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -3964,12 +3960,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -4049,12 +4045,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -4219,12 +4215,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -4304,12 +4300,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -4474,12 +4470,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -4559,12 +4555,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -4814,12 +4810,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -4984,12 +4980,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -5154,12 +5150,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
@@ -5239,12 +5235,12 @@ PrefabInstance:
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11707724
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320000, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15610299
+      value: 0.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 2839204342217320005, guid: 5619aad035b54e545b4f240d66b93f92,
         type: 3}
