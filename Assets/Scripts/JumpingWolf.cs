@@ -13,7 +13,8 @@ public class JumpingWolf : MonoBehaviour
     public Vector2 speed;
     public bool forward;
     public bool upward;
-
+    //public float jumpForce;
+    //public LayerMask groundLayers;
     // Start is called before the first frame update
     void Start()
     {
@@ -74,5 +75,6 @@ public class JumpingWolf : MonoBehaviour
                 }
             }
         }
+       // rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
     }
 }
