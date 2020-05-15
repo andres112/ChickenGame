@@ -33,11 +33,11 @@ public class EnemyFollow : MonoBehaviour {
         
         if (transform.position.x < target.position.x)
         {
-            transform.localScale = new Vector3(-4,4,0);
+            transform.localScale = new Vector3(-2.2f,2.2f,0);
         }
         else
         {
-            transform.localScale = new Vector3(4,4,0);
+            transform.localScale = new Vector3(2.2f,2.2f,0);
         }
         
         //moveCharacter(movement);

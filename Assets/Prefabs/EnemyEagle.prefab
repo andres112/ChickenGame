@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 8367321514644997437}
   - component: {fileID: 8367321514644997433}
   - component: {fileID: 8367321514644997432}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: EnemyEagle
-  m_TagString: Untagged
+  m_TagString: Deadly Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8367321514644997411}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.31, y: 6.57, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -69,9 +69,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.01030615}
   serializedVersion: 2
-  m_Radius: 0.15884636
+  m_Radius: 0.16377525
 --- !u!114 &8367321514644997437
 MonoBehaviour:
   m_ObjectHideFlags: 0

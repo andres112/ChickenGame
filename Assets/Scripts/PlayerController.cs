@@ -131,6 +131,10 @@ public class PlayerController : MonoBehaviour {
                     // Air Jump
                     anim.SetBool ("Ground", false);
                     if (airJumpCount == 1) {
+                        
+                        if (pfDoubleJumpEffect == null) {
+                            // find new enemy
+                        }
                         Instantiate (pfDoubleJumpEffect, transform.position, Quaternion.identity);
                         rigid.velocity = Vector2.up * (jumpvelocity - 2f);
                         ScoreScript.instance.ReduceScore ();
