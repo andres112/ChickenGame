@@ -253,6 +253,7 @@ public class PlayerController : MonoBehaviour {
                 case "Ice Cube":
                     anim.SetBool("Metal", false);
                     anim.SetBool("Super", false);
+                    anim.SetBool("Frozen", true);
                     AccelerationSpeed = GroundSpeed;
                     SkySpeed = GroundSpeed;
                     anim.speed = 0.5f;                    
@@ -260,12 +261,14 @@ public class PlayerController : MonoBehaviour {
                 case "Anvil":
                     anim.SetBool("Metal", true);
                     anim.SetBool("Super", false);
+                    anim.SetBool("Frozen", false);
                     canJump = false;
                     SkySpeed = GroundSpeed;
                     break;
                 case "Thunder":
                     anim.SetBool("Super", true);
                     anim.SetBool("Metal", false);
+                    anim.SetBool("Frozen", false);
                     GroundSpeed = 1;
                     AccelerationSpeed = GroundSpeed;
                     SkySpeed = GroundSpeed;
@@ -277,6 +280,7 @@ public class PlayerController : MonoBehaviour {
             canJump = true;
             anim.SetBool("Metal", false);
             anim.SetBool("Super", false);
+            anim.SetBool("Frozen", false);
             anim.speed = 1;
             // First is required to pause the audio to reconfigure the features//
             if (IsIceCube) {
