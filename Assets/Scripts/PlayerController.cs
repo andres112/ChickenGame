@@ -116,10 +116,9 @@ public class PlayerController : MonoBehaviour {
         //if we are on the ground and the space bar was pressed, change our ground state and add an upward force
         // 
         if (Input.GetKey (KeyCode.Space)) {
-            if(!canJump){
-                theGameManager.managePlaySound("NoJump");
-            }
-            else if (grounded) {
+            if (!canJump) {
+                theGameManager.managePlaySound ("NoJump");
+            } else if (grounded) {
                 // Normal Jump
                 anim.SetBool ("Ground", false);
                 rigid.velocity = Vector2.up * jumpvelocity;
@@ -131,7 +130,7 @@ public class PlayerController : MonoBehaviour {
                     // Air Jump
                     anim.SetBool ("Ground", false);
                     if (airJumpCount == 1) {
-                        
+
                         if (pfDoubleJumpEffect == null) {
                             // find new enemy
                         }
@@ -149,37 +148,36 @@ public class PlayerController : MonoBehaviour {
         }
 
         // When player click on Up arrow to increase velocity temporarly
-        if (Input.GetKey (KeyCode.UpArrow) && Power.power > 0 && !CountDown.IsTimerOn) {
+        if ((Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.W)) && Power.power > 0 && !CountDown.IsTimerOn) {
             CountDown.timeLeft = 2f;
             CountDown.IsTimerOn = true;
             timerOnBy = "Thunder";
             anim.speed = 1.5f;
-            Power.DecreasePower();
+            Power.DecreasePower ();
             theGameManager.managePlaySound (soundNames[8]);
+        }
+
+        if (Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.S)) {
+            // rapid drop 
+            rigid.velocity = Vector2.down * jumpvelocity;
         }
     }
 
     // detect collision and trigger destroy element (corn)
     public void OnTriggerEnter2D (Collider2D collision) {
         // item collider
-        if (collision.gameObject.layer == 12)
-        {
-            if (collision.gameObject.tag == "Corn")
-            {
-                ScoreScript.instance.AddScore(); // increase the score every time collide with a corn
-                theGameManager.managePlaySound(soundNames[0]);
+        if (collision.gameObject.layer == 12) {
+            if (collision.gameObject.tag == "Corn") {
+                ScoreScript.instance.AddScore (); // increase the score every time collide with a corn
+                theGameManager.managePlaySound (soundNames[0]);
             }
-            if (!(collision.gameObject.tag == "Stationary"))
-            {
-                collision.gameObject.SetActive(false);
-                Destroy(collision.gameObject); // destroy the item wich collides
+            if (!(collision.gameObject.tag == "Stationary")) {
+                collision.gameObject.SetActive (false);
+                Destroy (collision.gameObject); // destroy the item wich collides
             }
-        }
-        else
-        {
-            if (collision.gameObject.tag == "Goal")
-            {
-                theGameManager.winGame();
+        } else {
+            if (collision.gameObject.tag == "Goal") {
+                theGameManager.winGame ();
             }
         }
     }
@@ -209,18 +207,18 @@ public class PlayerController : MonoBehaviour {
             // Shield collision
             if (collision.gameObject.tag == "Shield" & Health.shield < Health.health) {
                 // increase the shield every time collide with a blue hearth if the shield is less than health
-                Health.IncreaseShield();
+                Health.IncreaseShield ();
                 theGameManager.managePlaySound (soundNames[3]);
 
             }
             // New Life Collision
             if (collision.gameObject.tag == "Life") {
-                Health.IncreaseHealth(); // increase the shield every time collide with a blue hearth
+                Health.IncreaseHealth (); // increase the shield every time collide with a blue hearth
                 theGameManager.managePlaySound (soundNames[4]);
             }
             // Thunder Collision - Power up
             if (collision.gameObject.tag == "Thunder") {
-                Power.IncreasePower(); // increase the power every time collide with a thunder
+                Power.IncreasePower (); // increase the power every time collide with a thunder
                 theGameManager.managePlaySound (soundNames[7]);
             }
             // Ice Cube Collision
@@ -255,24 +253,24 @@ public class PlayerController : MonoBehaviour {
         if (CountDown.IsTimerOn) {
             switch (restriction) {
                 case "Ice Cube":
-                    anim.SetBool("Metal", false);
-                    anim.SetBool("Super", false);
-                    anim.SetBool("Frozen", true);
+                    anim.SetBool ("Metal", false);
+                    anim.SetBool ("Super", false);
+                    anim.SetBool ("Frozen", true);
                     AccelerationSpeed = GroundSpeed;
                     SkySpeed = GroundSpeed;
-                    anim.speed = 0.5f;                    
+                    anim.speed = 0.5f;
                     break;
                 case "Anvil":
-                    anim.SetBool("Metal", true);
-                    anim.SetBool("Super", false);
-                    anim.SetBool("Frozen", false);
+                    anim.SetBool ("Metal", true);
+                    anim.SetBool ("Super", false);
+                    anim.SetBool ("Frozen", false);
                     canJump = false;
                     SkySpeed = GroundSpeed;
                     break;
                 case "Thunder":
-                    anim.SetBool("Super", true);
-                    anim.SetBool("Metal", false);
-                    anim.SetBool("Frozen", false);
+                    anim.SetBool ("Super", true);
+                    anim.SetBool ("Metal", false);
+                    anim.SetBool ("Frozen", false);
                     GroundSpeed = 1;
                     AccelerationSpeed = GroundSpeed;
                     SkySpeed = GroundSpeed;
@@ -282,9 +280,9 @@ public class PlayerController : MonoBehaviour {
             AccelerationSpeed = Original_AccelerationSpeed;
             SkySpeed = Original_SkySpeed;
             canJump = true;
-            anim.SetBool("Metal", false);
-            anim.SetBool("Super", false);
-            anim.SetBool("Frozen", false);
+            anim.SetBool ("Metal", false);
+            anim.SetBool ("Super", false);
+            anim.SetBool ("Frozen", false);
             anim.speed = 1;
             // First is required to pause the audio to reconfigure the features//
             if (IsIceCube) {

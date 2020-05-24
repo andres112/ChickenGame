@@ -21,6 +21,10 @@ public class MainMenu : MonoBehaviour {
         gameManager.ResetGameVariables ();
     }
 
+    public void HowPlay () {
+        SceneManager.LoadScene ("How2Play");
+    }
+
     public void Options () {
         PlayerPrefs.SetString ("Pre_Scene", SceneManager.GetActiveScene ().name);
         SceneManager.LoadScene ("OptionMenu");
