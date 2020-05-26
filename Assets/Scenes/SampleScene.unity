@@ -4070,6 +4070,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Anvil
       objectReference: {fileID: 0}
+    - target: {fileID: 7223373733520986871, guid: 7fe39c1652e5c2c4f97b661e19ccc216,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fe39c1652e5c2c4f97b661e19ccc216, type: 3}
 --- !u!1 &1871252755
@@ -5366,17 +5371,17 @@ PrefabInstance:
     - target: {fileID: 8699833313463196373, guid: bb22486e5316096439144dad830eb4ec,
         type: 3}
       propertyPath: sounds.Array.data[6].volume
-      value: 0.75
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 8699833313463196373, guid: bb22486e5316096439144dad830eb4ec,
         type: 3}
       propertyPath: sounds.Array.data[6].pitch
-      value: 0.5
+      value: 0.98
       objectReference: {fileID: 0}
     - target: {fileID: 8699833313463196373, guid: bb22486e5316096439144dad830eb4ec,
         type: 3}
       propertyPath: sounds.Array.data[6].randomPitch
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8699833313463196373, guid: bb22486e5316096439144dad830eb4ec,
         type: 3}
