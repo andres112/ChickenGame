@@ -615,7 +615,7 @@ MonoBehaviour:
   theSections:
     classes:
     - sections:
-      - {fileID: 7049084836553184439, guid: d5f9a71990d842d499e4bf406cc827cf, type: 3}
+      - {fileID: 8776508527287052766, guid: 13e5cc5a13574d04488ca3dfde651a9a, type: 3}
       - {fileID: 4732397721450619464, guid: 214ed9cb7c354424a93e35314ac42ae7, type: 3}
       - {fileID: 2578873810372584378, guid: ea6f6fa2892a56c448ba830eef8cac2f, type: 3}
       - {fileID: 6836851742035060475, guid: 32dedc540bfba7a45ba833bae13c218f, type: 3}
@@ -2176,6 +2176,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chicken
       objectReference: {fileID: 0}
+    - target: {fileID: 4054690884481590449, guid: 807ef2bab47c2fe41bbc101f39f297f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4054690884481590453, guid: 807ef2bab47c2fe41bbc101f39f297f0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2271,6 +2276,36 @@ PrefabInstance:
       propertyPath: pfDoubleJumpEffect
       value: 
       objectReference: {fileID: 425657192}
+    - target: {fileID: 5270429969975170763, guid: 807ef2bab47c2fe41bbc101f39f297f0,
+        type: 3}
+      propertyPath: jumpTime
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5270429969975170763, guid: 807ef2bab47c2fe41bbc101f39f297f0,
+        type: 3}
+      propertyPath: InertiaSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5270429969975170763, guid: 807ef2bab47c2fe41bbc101f39f297f0,
+        type: 3}
+      propertyPath: GroundSpeed
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5270429969975170763, guid: 807ef2bab47c2fe41bbc101f39f297f0,
+        type: 3}
+      propertyPath: SkySpeed
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5270429969975170763, guid: 807ef2bab47c2fe41bbc101f39f297f0,
+        type: 3}
+      propertyPath: jumpvelocity
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5270429969975170763, guid: 807ef2bab47c2fe41bbc101f39f297f0,
+        type: 3}
+      propertyPath: jumpTimeCounter
+      value: 0.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 807ef2bab47c2fe41bbc101f39f297f0, type: 3}
 --- !u!1 &763505208 stripped
@@ -3868,6 +3903,11 @@ PrefabInstance:
     - target: {fileID: 935828221, guid: c137ae1efcad6c24ea0d226410046cd5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2831134052919475398, guid: c137ae1efcad6c24ea0d226410046cd5,
+        type: 3}
+      propertyPath: speed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2831134052919475399, guid: c137ae1efcad6c24ea0d226410046cd5,
         type: 3}
