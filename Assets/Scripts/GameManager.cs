@@ -155,6 +155,13 @@ public class GameManager : MonoBehaviour {
 
     public IEnumerator RestartGameCo () {
         CountDown.timeLeft = 0;
+        // Lifes and shields decresing logic
+        if (Health.health == Health.shield) {
+            Health.DecreaseShield();
+        }
+        Health.DecreaseHealth();
+
+        checkIsAlive (); // First validate if chicken lifes are bigger than 0
         startAreaFlag.SetActive(true);
         startAreaFlag.GetComponent<Animator>().SetTrigger("active");
 
@@ -166,22 +173,15 @@ public class GameManager : MonoBehaviour {
             Destroy(objectList[i].gameObject);
         }
 
-        
         thePlayer.transform.position = playerStartPosition;
         theCook.transform.position = cookStartPosition;
         platformGeneration.transform.position = platformStartPosition;
         platformGeneration.resetPrivateVariables();
-
         
         thePlayer.gameObject.SetActive (true);
 
         yield return new WaitForSeconds(0.25f);
-        // Lifes and shields decresing logic
-        if (Health.health == Health.shield) {
-            Health.DecreaseShield();
-        }
-        Health.DecreaseHealth();;
-        checkIsAlive ();
+        
     }
     public IEnumerator RespawnGameCo () {
         startAreaFlag.SetActive(true);
