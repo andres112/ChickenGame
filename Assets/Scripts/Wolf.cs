@@ -25,7 +25,7 @@ public class Wolf : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.IsGameOver)
+        if (!GameManager.IsGameOver && !PauseMenu.GameIsPaused)
         {
             if (transform.position.x >= fTurningPoint.x)
             {
@@ -49,6 +49,9 @@ public class Wolf : MonoBehaviour
                 Vector3 newPosition = new Vector3(transform.position.x - speed, transform.position.y, transform.position.z);
                 transform.position = newPosition;
             }
+
+
+
 
            // rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
 

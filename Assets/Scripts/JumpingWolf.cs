@@ -27,7 +27,7 @@ public class JumpingWolf : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.IsGameOver)
+        if (!GameManager.IsGameOver && !PauseMenu.GameIsPaused)
         {
             if (transform.position.x >= fTurningPoint.x)
             {

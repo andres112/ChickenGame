@@ -19,7 +19,7 @@ public class MovingPlatform : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (!GameManager.IsGameOver) {
+        if (!GameManager.IsGameOver && !PauseMenu.GameIsPaused) {
             if (transform.position.x >= fTurningPoint.x && transform.position.y >= fTurningPoint.y) {
                 forward = false;
             }
