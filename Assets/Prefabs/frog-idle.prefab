@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 50374605966066788}
   - component: {fileID: 60066280556931934}
   - component: {fileID: 114472982118490708}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: frog-idle
-  m_TagString: Untagged
+  m_TagString: Deadly Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
