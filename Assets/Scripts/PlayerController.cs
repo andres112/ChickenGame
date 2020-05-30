@@ -116,17 +116,6 @@ public class PlayerController : MonoBehaviour
         //set our speed
         anim.SetFloat("Speed", Mathf.Abs((1)));
     }
-    
-    public IEnumerator stopEffect() {
-        yield return new WaitForSeconds (0.3f);
-        pfDoubleJumpEffect.GetComponent<ParticleSystem> ().enableEmission = false;
-        pfDoubleJumpEffect.GetComponent<ParticleSystem> ().Clear ();
-    }    
-
-    IEnumerator DestroyPartEffect() {
-        yield return new WaitForSeconds (1f);
-        Destroy (gameObject);
-    }
 
     void Update()
     {
@@ -189,7 +178,6 @@ public class PlayerController : MonoBehaviour
                         else if (airJumpCount == 1)
                         {
                             Instantiate(pfDoubleJumpEffect, transform.position, Quaternion.identity);
-                            StartCoroutine (stopEffect());
                             rigid.gravityScale = 0.7f;
                             rigid.velocity = Vector2.up * (jumpvelocity);
                             ScoreScript.instance.ReduceScore(2);
