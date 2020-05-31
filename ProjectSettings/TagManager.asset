@@ -20,6 +20,8 @@ TagManager:
   - BirdGFX_Tag
   - Thunder
   - Goal
+  - Sectionstart
+  - Sectionende
   layers:
   - Default
   - TransparentFX
@@ -34,7 +36,7 @@ TagManager:
   - Platform
   - Enemy
   - Items
-  - BirdGFX
+  - SectionCollider
   - 
   - 
   - 
