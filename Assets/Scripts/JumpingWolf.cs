@@ -13,6 +13,7 @@ public class JumpingWolf : MonoBehaviour
     public Vector2 speed;
     public bool forward;
     public bool upward;
+    private List<int> list = new List<int>() { 0, 1, 2, 4, 5, 12 };
     //public float jumpForce;
     //public LayerMask groundLayers;
     // Start is called before the first frame update
@@ -76,5 +77,13 @@ public class JumpingWolf : MonoBehaviour
             }
         }
        // rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+    }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        // Avoid collisions with platforms
+        if (list.Contains(other.gameObject.layer))
+        {
+            Physics2D.IgnoreCollision(other.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        }
     }
 }

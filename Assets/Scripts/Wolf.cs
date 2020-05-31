@@ -13,6 +13,7 @@ public class Wolf : MonoBehaviour
     public bool forward;
     //public float jumpForce;
     //public LayerMask groundLayers;
+    private List<int> list = new List<int>() { 0, 1, 2, 4, 5, 12 };
 
     // Start is called before the first frame update
     void Start()
@@ -53,21 +54,17 @@ public class Wolf : MonoBehaviour
 
 
 
-           // rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
 
-            /*if (transform.position.x > fTurningPoint.x)
-            {
-                Vector3 newPosition = new Vector3(transform.position.x, fTurningPoint.y, transform.position.z);
-                transform.position = newPosition;
-                forward = false;
-            }
-            if (transform.position.x < bTurningPoint.x)
-            {
-                Vector3 newPosition = new Vector3(transform.position.x, bTurningPoint.y, transform.position.z);
-                transform.position = newPosition;
-                forward = true;
-            }*/
         }
-       
     }
-}
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            // Avoid collisions with platforms
+            if (list.Contains(other.gameObject.layer))
+            {
+                Physics2D.IgnoreCollision(other.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            }
+        }
+
+    }

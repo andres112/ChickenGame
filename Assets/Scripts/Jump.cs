@@ -15,6 +15,8 @@ public class Jump : MonoBehaviour
     public bool upward;
     //public float jumpForce;
     //public LayerMask groundLayers;
+    private List<int> list = new List<int>() { 0, 1, 2, 4, 5, 12 };
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +55,7 @@ public class Jump : MonoBehaviour
             {
                 if (upward)
                 {
-                    Vector3 newPosition = new Vector3(transform.position.x + speed.x , transform.position.y + speed.y * 2, transform.position.z);
+                    Vector3 newPosition = new Vector3(transform.position.x + speed.x, transform.position.y + speed.y * 2, transform.position.z);
                     transform.position = newPosition;
                 }
                 else
@@ -82,6 +84,16 @@ public class Jump : MonoBehaviour
                 }
             }
         }
+
         // rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
     }
-}
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            // Avoid collisions with platforms
+            if (list.Contains(other.gameObject.layer))
+            {
+                Physics2D.IgnoreCollision(other.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            }
+        }
+    }
+
