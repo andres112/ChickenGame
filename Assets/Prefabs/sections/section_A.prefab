@@ -892,15 +892,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7049084836553184328}
     m_Modifications:
+    - target: {fileID: 114472982118490708, guid: 6867eaacd5cd27c41a8d81cd6f421bf8,
+        type: 3}
+      propertyPath: speed.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114472982118490708, guid: 6867eaacd5cd27c41a8d81cd6f421bf8,
+        type: 3}
+      propertyPath: speed.y
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114472982118490708, guid: 6867eaacd5cd27c41a8d81cd6f421bf8,
+        type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 2320663347362620505}
     - target: {fileID: 3960469143771674970, guid: 6867eaacd5cd27c41a8d81cd6f421bf8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.393
+      value: -0.741
       objectReference: {fileID: 0}
     - target: {fileID: 3960469143771674970, guid: 6867eaacd5cd27c41a8d81cd6f421bf8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1576
+      value: 1.145
       objectReference: {fileID: 0}
     - target: {fileID: 3960469143771674970, guid: 6867eaacd5cd27c41a8d81cd6f421bf8,
         type: 3}
@@ -950,12 +965,12 @@ PrefabInstance:
     - target: {fileID: 3960469143771674970, guid: 6867eaacd5cd27c41a8d81cd6f421bf8,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5836289
+      value: 1.6485577
       objectReference: {fileID: 0}
     - target: {fileID: 3960469143771674970, guid: 6867eaacd5cd27c41a8d81cd6f421bf8,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.783233
+      value: 3.0643394
       objectReference: {fileID: 0}
     - target: {fileID: 5078433250861110580, guid: 6867eaacd5cd27c41a8d81cd6f421bf8,
         type: 3}
@@ -974,6 +989,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6867eaacd5cd27c41a8d81cd6f421bf8, type: 3}
+--- !u!50 &2320663347362620505 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 50374605966066788, guid: 6867eaacd5cd27c41a8d81cd6f421bf8,
+    type: 3}
+  m_PrefabInstance: {fileID: 2343649077400412221}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2368147952225122694
 PrefabInstance:
   m_ObjectHideFlags: 0
