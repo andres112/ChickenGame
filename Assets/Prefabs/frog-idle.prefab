@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 95167928423109622}
   - component: {fileID: 50374605966066788}
   - component: {fileID: 60066280556931934}
+  - component: {fileID: 6564882082841588733}
   m_Layer: 11
   m_Name: frog-idle
   m_TagString: Deadly Hazard
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5078433250861110580}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.0242, y: 0.0808, z: 0}
-  m_LocalScale: {x: 1.7235488, y: 1.5051329, z: 1}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -155,3 +156,20 @@ PolygonCollider2D:
       - {x: 0.145, y: -0.08}
       - {x: 0.145, y: 0.01}
       - {x: 0.055, y: 0.099999994}
+--- !u!114 &6564882082841588733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5078433250861110580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb035a9977cffd146b01b64fa8a31f93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  delta: {x: 12, y: 5}
+  speed: {x: 0.01, y: 0.01}
+  forward: 0
+  upward: 0

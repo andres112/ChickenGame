@@ -13,6 +13,7 @@ public class Jump : MonoBehaviour
     public Vector2 speed;
     public bool forward;
     public bool upward;
+    private Animator anim;
     //public float jumpForce;
     //public LayerMask groundLayers;
     private List<int> list = new List<int>() { 0, 1, 2, 4, 5, 12 };
@@ -24,6 +25,7 @@ public class Jump : MonoBehaviour
         fTurningPoint = new Vector3(transform.position.x + delta.x, transform.position.y, transform.position.z);
         uTurningPoint = new Vector3(transform.position.x, transform.position.y + delta.y / 2, transform.position.z);
         bTurningPoint = transform.position;
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -45,10 +47,12 @@ public class Jump : MonoBehaviour
             if (transform.position.y >= uTurningPoint.y)
             {
                 upward = false;
+                anim.SetBool("Up", false);
             }
             else if (transform.position.y <= fTurningPoint.y)
             {
                 upward = true;
+                anim.SetBool("Up", true);
             }
 
             if (forward)
