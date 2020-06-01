@@ -16,7 +16,7 @@ public class Jump : MonoBehaviour
     private Animator anim;
     //public float jumpForce;
     //public LayerMask groundLayers;
-    private List<int> list = new List<int>() { 0, 1, 2, 4, 5, 12 };
+    private List<int> list = new List<int>() { 0, 1, 2, 4, 5, 10, 11, 12 };
 
     // Start is called before the first frame update
     void Start()

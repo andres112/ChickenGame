@@ -37,8 +37,6 @@ public class GameManager : MonoBehaviour {
 
     public GameObject countdown;
 
-    private Hashtable sounds = new Hashtable ();
-
     private void Awake() {
         Screen.fullScreen = true;
     }
@@ -60,9 +58,6 @@ public class GameManager : MonoBehaviour {
 
         // TODO: // Set the game over screen in false 
         // gameOverScreen.SetActive(false);
-
-        // Initialize Sounds used
-        sounds.Add ("background", "Background");
 
         //caching AudioManager
         audioManager = AudioManager.audio;
@@ -96,7 +91,7 @@ public class GameManager : MonoBehaviour {
         
 
         if (!once_flag) {
-            managePlaySound ((string) sounds["background"]);
+            managePlaySound ("Background");
             once_flag = true;
         }
         if (currentLevel < LevelScript.levelValue) {
@@ -149,12 +144,15 @@ public class GameManager : MonoBehaviour {
 
     public void winGame()
     {
-        this.manageStopSound((string)sounds["background"]); // stop background sound when player wins
+        this.manageStopSound("Background"); // stop background sound when player wins
         SceneManager.LoadScene("WinScreen");
     }
 
     public IEnumerator RestartGameCo () {
         CountDown.timeLeft = 0;
+        CountDown.IsTimerOn = false;
+        // manageStopSound SFX when chicken die
+        this.manageStopSound("SpeedUp");
         // Lifes and shields decresing logic
         if (Health.health == Health.shield) {
             Health.DecreaseShield();
@@ -236,7 +234,7 @@ public class GameManager : MonoBehaviour {
     private void checkIsAlive () {
         if (Health.health <= 0) {
             IsGameOver = true;
-            this.manageStopSound ((string) sounds["background"]); // stop background sound when player dies
+            this.manageStopSound ("Background"); // stop background sound when player dies
             SceneManager.LoadScene ("GameOver");
         }
     }

@@ -200,7 +200,7 @@ public class PlayerController : MonoBehaviour
             CountDown.timeLeft = 2f;
             CountDown.IsTimerOn = true;
             timerOnBy = "Thunder";
-            anim.speed = 1.5f;
+            anim.speed = 1.7f;
             Power.DecreasePower();
             theGameManager.managePlaySound(soundNames[8]);
         }
@@ -364,6 +364,7 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("Super", false);
             anim.SetBool("Frozen", false);
             anim.speed = 1;
+            theGameManager.manageStopSound("SpeedUp");
             // First is required to pause the audio to reconfigure the features//
             if (IsIceCube)
             {
