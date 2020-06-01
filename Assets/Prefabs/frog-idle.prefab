@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  delta: {x: 12, y: 5}
+  delta: {x: 12, y: 14}
   speed: {x: 0.01, y: 0.01}
   forward: 0
   upward: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Power : MonoBehaviour {
-    public static int power = 1;
+    public static int power = 2;
 
     public const int MaxPower = 3;
 

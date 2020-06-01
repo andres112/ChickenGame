@@ -28,7 +28,7 @@ public class FireLine : MonoBehaviour {
         if (Fireball.IsFried) {
             theGameManager.restartGame ();
             Fireball.IsFried = false;
-            // Destroy all fireball instances after chiches is dead
+            // Destroy all fireball instances after chicken is dead
             GameObject[] fireball_instances = GameObject.FindGameObjectsWithTag("Fireball"); 
             foreach(GameObject fireball_instance in fireball_instances)
             {
