@@ -149,9 +149,12 @@ MonoBehaviour:
   moveSpeed: 3
   sightStart: {fileID: 6392216051402841580}
   sightEnd: {fileID: 7355664833393556726}
-  detectWhat:
+  ColliderPatroling:
     serializedVersion: 2
-    m_Bits: 8196
+    m_Bits: 8192
+  SectionEndCollider:
+    serializedVersion: 2
+    m_Bits: 16384
   chaseRadius: 20
   _rayCastOffset: 5
   _rayCastDistance: 10

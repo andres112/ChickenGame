@@ -13,11 +13,14 @@ public class EnemyFollow : MonoBehaviour {
     //public Transform sectionend;
     public Transform sightStart;
     public Transform sightEnd;
-    public LayerMask detectWhat;
+    public LayerMask ColliderPatroling;
+    public LayerMask SectionEndCollider;
+
     float chasingTimer = 2f;
 
     
-    private bool colliderhit = true;
+    private bool colliderHit_forPatrol;
+    private bool colliderHit_forSectionEnd;
     private bool follow = false;
     private bool patrol = true;
     public float chaseRadius;
@@ -49,11 +52,18 @@ public class EnemyFollow : MonoBehaviour {
         
         if (Vector3.Distance(target.position, transform.position) <= chaseRadius)
         {
-  
-                patrol = false;
-                transform.position =
-                    Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+            patrol = false;
+            transform.position =
+                Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
 
+       
+            colliderHit_forSectionEnd = Physics2D.Linecast(sightStart.position, sightEnd.position, SectionEndCollider);
+
+            if (colliderHit_forSectionEnd)
+            {
+                transform.localScale = new Vector2 (transform.localScale.x * -1, transform.localScale.y);
+                moveSpeed *= -1;
+            }
         }
         else
         {
@@ -64,9 +74,9 @@ public class EnemyFollow : MonoBehaviour {
         {
             
             transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
-            colliderhit = Physics2D.Linecast(sightStart.position, sightEnd.position, detectWhat);
+            colliderHit_forPatrol = Physics2D.Linecast(sightStart.position, sightEnd.position, ColliderPatroling);
 
-            if (colliderhit) {
+            if (colliderHit_forPatrol) {
 					
                 transform.localScale = new Vector2 (transform.localScale.x * -1, transform.localScale.y);
                 moveSpeed *= -1;
