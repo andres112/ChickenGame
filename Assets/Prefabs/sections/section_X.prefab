@@ -44,7 +44,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   delta: {x: 10, y: 5}
-  speed: {x: 0.01, y: 0.01}
+  speed: {x: 0.02, y: 0.02}
   forward: 0
   upward: 0
 --- !u!114 &4275301389892403708
@@ -61,7 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   delta: 8
-  speed: 0.01
+  speed: 0.02
   forward: 0
 --- !u!1001 &241557724955149350
 PrefabInstance:

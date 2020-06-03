@@ -28,8 +28,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  delta: {x: 15, y: 5}
-  speed: {x: 0.01, y: 0.01}
+  delta: {x: 15, y: 6}
+  speed: {x: 0.02, y: 0.02}
   forward: 0
   upward: 0
 --- !u!114 &2228148156547441566
