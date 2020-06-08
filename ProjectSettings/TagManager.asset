@@ -37,7 +37,7 @@ TagManager:
   - Enemy
   - Items
   - SectionCollider
-  - 
+  - SectionEndCollider
   - 
   - 
   - 

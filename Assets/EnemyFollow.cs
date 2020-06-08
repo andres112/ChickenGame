@@ -24,11 +24,6 @@ public class EnemyFollow : MonoBehaviour {
     private bool follow = false;
     private bool patrol = true;
     public float chaseRadius;
-
-    [SerializeField] private float _rayCastOffset = 5f;
-    [SerializeField] private float _rayCastDistance = 10f;
-    private float _moveDir = -1;
-    
     
     // Start is called before the first frame update
     void Start(){
@@ -46,28 +41,36 @@ public class EnemyFollow : MonoBehaviour {
 
         Gizmos.DrawLine(sightStart.position, sightEnd.position);
     }
-    
+
     void Update()
     {
         
         if (Vector3.Distance(target.position, transform.position) <= chaseRadius)
         {
             patrol = false;
-            transform.position =
-                Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
-
-       
             colliderHit_forSectionEnd = Physics2D.Linecast(sightStart.position, sightEnd.position, SectionEndCollider);
 
+            if(!colliderHit_forSectionEnd)
+                transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+            
+            
             if (colliderHit_forSectionEnd)
             {
                 transform.localScale = new Vector2 (transform.localScale.x * -1, transform.localScale.y);
-                moveSpeed *= -1;
+  //              moveSpeed *= -1;
+               //transform.Translate(Vector2.left * -3f * Time.deltaTime);
+               //rb.AddForce(-transform.forward);
+               transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed*(-1) * Time.deltaTime);
+
+               //rb.velocity = new Vector3 (moveSpeed*(-1), rb.velocity.y, 0f);
+               
             }
+
         }
         else
         {
             patrol = true;
+            
         }
 
         if (patrol)
@@ -82,27 +85,7 @@ public class EnemyFollow : MonoBehaviour {
                 moveSpeed *= -1;
 
             }
-            
- 
-            //transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
-      /*      RaycastHit2D sectionstarthit = Physics2D.Raycast(sectionstart.position, Vector2.zero);
-            RaycastHit2D sectionendhit = Physics2D.Raycast(sectionend.position, Vector2.left);
-            if (sectionendhit.collider != null)
-            {
-                if (colliderhit)
-                {
-                    transform.eulerAngles = new Vector3(0, -180, 0);
-                    colliderhit = false;
-                }
-                else
-                {
-                    transform.eulerAngles = new Vector3(0, 0, 0);
-                    colliderhit = true;
-                }
-
-            }*/
         }
-
 
         /*
              Vector3 direction = target.position - transform.position;
