@@ -208,7 +208,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
             // rapid drop 
-            rigid.velocity = Vector2.down * jumpvelocity;
+            rigid.velocity = Vector2.down * jumpvelocity * 2;
         }
     }
 
