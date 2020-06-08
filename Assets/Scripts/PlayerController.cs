@@ -162,7 +162,7 @@ public class PlayerController : MonoBehaviour
                 }
        
             }
-            else  if (Input.GetKeyDown(KeyCode.Space) & ScoreScript.scoreValue >= 0)
+            else  if (Input.GetKeyDown(KeyCode.Space) & ScoreScript.scoreValue > 0)
             {
                     if (airJumpCount > 0)
                     {
@@ -172,7 +172,7 @@ public class PlayerController : MonoBehaviour
                         {
                             rigid.gravityScale = 0.8f;
                             rigid.velocity = Vector2.up * (jumpvelocity + 1f);
-                            ScoreScript.instance.ReduceScore();
+                            ScoreScript.instance.ReduceScore(1);
                             theGameManager.managePlaySound(soundNames[1]);
                         }
                         else if (airJumpCount == 1)

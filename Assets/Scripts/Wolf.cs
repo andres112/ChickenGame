@@ -51,10 +51,6 @@ public class Wolf : MonoBehaviour
                 transform.position = newPosition;
             }
 
-
-
-
-
         }
     }
 
