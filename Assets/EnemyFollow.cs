@@ -6,8 +6,10 @@ public class EnemyFollow : MonoBehaviour {
 
     private Transform target;
     public float moveSpeed = 3f;
+    private float tempspeed = 1f;
+
     private Rigidbody2D rb;
-    private Vector2 movement;
+    //private Vector2 movement;
     private List<int> list = new List<int> () { 0, 1, 2, 4, 5, 12 };
     //public Transform sectionstart;
     //public Transform sectionend;
@@ -16,25 +18,20 @@ public class EnemyFollow : MonoBehaviour {
     public LayerMask ColliderPatroling;
     public LayerMask SectionEndCollider;
 
-    float chasingTimer = 2f;
-
-    
     private bool colliderHit_forPatrol;
-    private bool colliderHit_forSectionEnd;
-    private bool follow = false;
+    private bool follow = true;
     private bool patrol = true;
     public float chaseRadius;
     
     // Start is called before the first frame update
     void Start(){
-        rb = this.GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        //rb.isKinematic = true;
     }
 
 
     // Update is called once per frame
-    
-
     void OnDrawGizmos()
     {
         Gizmos.color = Color.magenta;
@@ -44,46 +41,46 @@ public class EnemyFollow : MonoBehaviour {
 
     void Update()
     {
-        
-        if (Vector3.Distance(target.position, transform.position) <= chaseRadius)
+
+        bool colliderHit_forSectionEnd = Physics2D.Linecast(sightStart.position, sightEnd.position, SectionEndCollider);
+       //Debug.Log ("**** Chicken follow" + follow);
+
+        if (colliderHit_forSectionEnd)
         {
-            patrol = false;
-            colliderHit_forSectionEnd = Physics2D.Linecast(sightStart.position, sightEnd.position, SectionEndCollider);
+            follow = false;
+        }
 
-            if(!colliderHit_forSectionEnd)
-                transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+        if (!follow)
+        {
             
-            
-            if (colliderHit_forSectionEnd)
-            {
-                transform.localScale = new Vector2 (transform.localScale.x * -1, transform.localScale.y);
-  //              moveSpeed *= -1;
-               //transform.Translate(Vector2.left * -3f * Time.deltaTime);
-               //rb.AddForce(-transform.forward);
-               transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed*(-1) * Time.deltaTime);
-
-               //rb.velocity = new Vector3 (moveSpeed*(-1), rb.velocity.y, 0f);
-               
-            }
-
+            transform.localScale = new Vector2 (Mathf.Abs(transform.localScale.x )* -1, transform.localScale.y);
+            //moveSpeed = -moveSpeed;
+            //rb.velocity = new Vector2((-1) * moveSpeed, rb.velocity.y);
+            transform.position =
+                Vector2.MoveTowards(transform.position, target.position, moveSpeed * (-1) * Time.deltaTime);
         }
         else
         {
-            patrol = true;
-            
-        }
+            if (Vector3.Distance(target.position, transform.position) <= chaseRadius)
+            {
+                patrol = false;
+                transform.position =
+                    Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
 
-        if (patrol)
-        {
-            
-            transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
-            colliderHit_forPatrol = Physics2D.Linecast(sightStart.position, sightEnd.position, ColliderPatroling);
+            }
+            else
+            {
+                //patrol = true;
+                transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
+                colliderHit_forPatrol = Physics2D.Linecast(sightStart.position, sightEnd.position, ColliderPatroling);
 
-            if (colliderHit_forPatrol) {
-					
-                transform.localScale = new Vector2 (transform.localScale.x * -1, transform.localScale.y);
-                moveSpeed *= -1;
+                if (colliderHit_forPatrol)
+                {
 
+                    transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
+                    moveSpeed *= -1;
+
+                }
             }
         }
 
@@ -95,7 +92,9 @@ public class EnemyFollow : MonoBehaviour {
              movement = direction;
          */
     }
+
     private void FixedUpdate() {
+
         
         if (transform.position.x < target.position.x)
         {
@@ -107,6 +106,7 @@ public class EnemyFollow : MonoBehaviour {
         }
         
         //moveCharacter(movement);
+
     }
     
     
@@ -118,6 +118,6 @@ public class EnemyFollow : MonoBehaviour {
     }
     
     void moveCharacter(Vector2 direction){
-        // rb.MovePosition((Vector2)transform.position + direction * moveSpeed * Time.deltaTime);
+        rb.MovePosition((Vector2)transform.position + direction * moveSpeed * Time.deltaTime);
     }
 }
