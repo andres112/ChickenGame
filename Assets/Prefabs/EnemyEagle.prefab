@@ -155,7 +155,7 @@ MonoBehaviour:
   SectionEndCollider:
     serializedVersion: 2
     m_Bits: 16384
-  chaseRadius: 20
+  chaseRadius: 10
   _rayCastOffset: 5
   _rayCastDistance: 10
 --- !u!212 &8367321514644997433
