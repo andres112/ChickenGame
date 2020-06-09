@@ -615,11 +615,11 @@ MonoBehaviour:
   theSections:
     classes:
     - sections:
-      - {fileID: 7049084836553184439, guid: d5f9a71990d842d499e4bf406cc827cf, type: 3}
-      - {fileID: 4732397721450619464, guid: 214ed9cb7c354424a93e35314ac42ae7, type: 3}
-      - {fileID: 2578873810372584378, guid: ea6f6fa2892a56c448ba830eef8cac2f, type: 3}
-      - {fileID: 6836851742035060475, guid: 32dedc540bfba7a45ba833bae13c218f, type: 3}
-      - {fileID: 7784721160863309341, guid: de79d0edc1d76c04ea0728d32beb1b92, type: 3}
+      - {fileID: 1698838058195508462, guid: 5ba4323be77209843bf31664b4e7b759, type: 3}
+      - {fileID: 7425560938962360446, guid: 38b4ae52699340343a436e24e46c526b, type: 3}
+      - {fileID: 7267150680639615572, guid: d8be11bb00b7a7c45ab7a275559216d2, type: 3}
+      - {fileID: 1698838058195508462, guid: 5ba4323be77209843bf31664b4e7b759, type: 3}
+      - {fileID: 7425560938962360446, guid: 38b4ae52699340343a436e24e46c526b, type: 3}
     - sections:
       - {fileID: 457029703000764096, guid: 7a06207c0db0c0b40898b0a18c6a4b1c, type: 3}
       - {fileID: 3038020112843978119, guid: df680632b7a885442afe5992525f5ac6, type: 3}
@@ -3748,7 +3748,7 @@ PrefabInstance:
     - target: {fileID: 2831134052919475398, guid: c137ae1efcad6c24ea0d226410046cd5,
         type: 3}
       propertyPath: speed
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2831134052919475399, guid: c137ae1efcad6c24ea0d226410046cd5,
         type: 3}
