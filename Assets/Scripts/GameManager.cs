@@ -121,6 +121,7 @@ public class GameManager : MonoBehaviour {
         ScoreScript.instance.ResetScore();
         ScoreScript.instance.ResetCurrentHighScore();
         GameManager.IsGameOver = false;
+        LevelScript.levelValue = 0;
     }
 
     IEnumerator StartDelay () {
